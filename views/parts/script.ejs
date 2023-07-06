@@ -1,0 +1,8 @@
+<script src="./js/js.js"></script>
+<script src='./js/icon.js'></script>
+<script>
+    service.getLang();
+    (async () => {
+        service.lang = await service.languagePack(service.language);
+    })()
+</script>

@@ -1,0 +1,28 @@
+body header .wrap {
+  border-color: #c0c0c0;
+}
+body header .wrap .logo span a {
+  color: #5681bf;
+  background-color: #e4efff;
+  border-color: #5681bf;
+}
+body header .wrap .logo p a {
+  color: #5681bf;
+}
+body header .wrap .user div a {
+  border-color: #859fc4;
+}
+body header .wrap .user div a:hover {
+  border-color: #859fc4;
+}
+body .back_wrap .back_body a {
+  color: #5681bf;
+}
+body .back_wrap .back_body a:hover {
+  color: #687c9a;
+}
+body section article {
+  border-color: #c0c0c0;
+}
+
+/*# sourceMappingURL=blue.css.map */

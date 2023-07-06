@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: max-content max-content auto max-content;
+  grid-template-areas: "header" "back" "section" "footer";
+  grid-gap: 0px;
+  min-width: 250px;
+  margin: 0;
+  padding: 0px;
+  font: 14px cursive;
+}
+body header {
+  grid-area: header;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+}
+body header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  border: 1px solid;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px 0px 0px 0px;
+}
+body header .wrap .logo, body header .wrap .user {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: flex-start;
+  width: 50%;
+}
+body header .wrap .logo span {
+  width: 64px;
+  height: 64px;
+}
+body header .wrap .logo span a {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border: 5px solid;
+  border-radius: 8px;
+  font: bold 32px cursive;
+  text-decoration-line: none;
+  text-align: center;
+  line-height: 50px;
+}
+body header .wrap .logo p {
+  margin: 0px 0px 0px 7px;
+}
+body header .wrap .logo p a {
+  font: bold 24px cursive;
+  text-decoration-line: none;
+  line-height: 58px;
+}
+body header .wrap .user {
+  justify-content: flex-end;
+}
+body header .wrap .user div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+body header .wrap .user div a {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+  margin: 0px 5px;
+  border-radius: 7px;
+  border: 2px solid;
+}
+body header .wrap .user div a img {
+  width: 100%;
+}
+body header .wrap .user div a:hover {
+  border: 1px solid;
+}
+body .back_wrap {
+  grid-area: back;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  min-height: 20px;
+  padding: 0px 10px;
+}
+body .back_wrap .back_body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 1200px;
+}
+body .back_wrap .back_body a {
+  text-decoration: none;
+  padding-right: 15px;
+}
+body section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-area: section;
+  width: 100%;
+  min-height: 100px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px;
+  margin: 0px auto;
+}
+body section article {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  max-width: 1200px;
+  border: 1px solid;
+  border-radius: 15px;
+  padding: 15px;
+}
+body footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-area: footer;
+  outline: 1px solid green;
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+}
+body footer .footer_wrap {
+  outline: 1px solid red;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/*# sourceMappingURL=style.css.map */

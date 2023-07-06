@@ -1,0 +1,24 @@
+<header>
+    <div class="wrap">
+        <div class="logo">
+            <span><a href="/">rW</a></span>
+            <p><a href="/">repeatWords</a></p>
+        </div>
+        <div class="user">
+            <% if (DATA.authorization === '1') { %>
+                <p><%= DATA.name %> <%= DATA.surname %></p>
+                <div>
+                    <img src="<%= DATA.foto %>" alt="ava">
+                    <div class="settings"></div>
+                </div>
+            <% } %>
+            <% if (DATA.authorization === '0') { %>
+                <div>
+                    <a href="/google"><img src="img/google.png" alt="google"></a>
+                    <a href="/linkedin"><img src="img/linkedin.png" alt="linkedin"></a>
+                    <a href="/facebook"><img src="img/facebook.png" alt="facebook"></a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</header>

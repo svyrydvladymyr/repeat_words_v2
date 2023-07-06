@@ -1,0 +1,56 @@
+$mainColor: #5681bf;
+$secondColor: #687c9a;
+$thirdColor: #859fc4;
+$fourthColor: #e4efff;
+$fifthColor: #c0c0c0;
+
+body {
+    header {
+        .wrap {
+            border-color: $fifthColor;
+            .logo{    
+                span {
+                    a {
+                        color: $mainColor;
+                        background-color: $fourthColor;
+                        border-color: $mainColor;
+                    }
+                }
+                p {
+                    a {
+                        color: $mainColor;
+                    }
+                }
+            }
+            .user {
+                div {
+                    a {
+                        border-color: $thirdColor;
+                        &:hover {
+                            border-color: $thirdColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .back_wrap {
+        .back_body {
+            a {
+                color: $mainColor;
+                &:hover{
+                    color: $secondColor;
+                }
+            }
+        }
+    }
+
+    section {
+        article{
+            border-color: $fifthColor;
+        }
+    }
+
+}
+
