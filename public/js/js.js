@@ -169,6 +169,45 @@ class Services {
 };
 
 class Static {
+    dropdowns = service.$('.menu');
+    counter = this.makeCounter();
+
+    makeCounter() {
+        let privateCounter = 0;
+        const changeBy = val => privateCounter += val;
+        return {
+            increment: () => changeBy(1),
+            decrement: () => changeBy(-1),
+            value: () => privateCounter
+        };
+    };
+
+    menuAnimation(change) {
+        const windowWidth = window.innerWidth;
+        const border = change === 'decrement' ? 0 : 10;
+        let animation = setInterval(() => {
+            if (change === 'decrement') { this.counter.decrement() };
+            if (change === 'increment') { this.counter.increment(); };
+            let count = this.counter.value();
+            if (windowWidth < 767) {
+                this.dropdowns[0].style.width = `${count*10}%`
+            };
+            this.dropdowns[0].style.maxWidth = windowWidth < 767 ? `${count*10}%` : `${50 + count*20}px`;
+            this.dropdowns[0].style.opacity = `${0 + count/10}`;
+            this.dropdowns[0].style.fontSize = `${count + 4}px`;
+            if (count === border) { clearInterval(animation) };
+        }, 13);
+    };
+
+    showMenu() {
+        if (this.dropdowns[0].classList.contains('menu_show')) {
+            setTimeout(() => { this.dropdowns[0].classList.remove('menu_show') }, 200);
+            this.menuAnimation('decrement');
+        } else {
+            this.dropdowns[0].classList.add('menu_show');
+            this.menuAnimation('increment');
+        };
+    };
 }
 
 class ValidationClass {
@@ -282,5 +321,15 @@ const date = new ShowDate();
 const calendar = new Calendar();
 
 window.onload = function() {};
-window.onclick = function() {};
 window.onscroll = function() {};
+
+window.onclick = function(event) {
+    if ((!event.target.matches('.drop_menu')) && (!event.target.matches('.drop_menu > i'))) {
+        for (let i = 0; i < loadStatic.dropdowns.length; i++) {
+            if (loadStatic.dropdowns[i].classList.contains('menu_show')) {
+                setTimeout(() => { loadStatic.dropdowns[i].classList.remove('menu_show') }, 200);
+                loadStatic.menuAnimation('decrement');
+            };
+        };
+    };
+};

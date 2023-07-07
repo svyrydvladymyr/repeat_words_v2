@@ -28,6 +28,7 @@ body header .wrap {
   flex-wrap: wrap;
   justify-content: center;
   justify-content: space-between;
+  position: relative;
   width: 100%;
   max-width: 1200px;
   border: 1px solid;
@@ -35,12 +36,47 @@ body header .wrap {
   padding: 20px;
   margin: 15px 0px 0px 0px;
 }
+body header .wrap .menu {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  min-width: 250px;
+  min-height: 10px;
+  max-width: 20px;
+  opacity: 0;
+  font-size: 3px;
+  right: 80px;
+  top: 130px;
+  background-color: #fff;
+  border: 2px solid;
+  border-radius: 6px 0px 6px 6px;
+}
+body header .wrap .menu::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -11px;
+  width: 0px;
+  height: 0px;
+  border-right: 129px solid;
+  border-bottom: 14px solid;
+  border-top: 14px solid transparent;
+  border-left: 114px solid transparent;
+  transform: skew(-34deg);
+}
+body header .wrap .menu_show {
+  display: flex;
+}
 body header .wrap .logo, body header .wrap .user {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  justify-content: flex-start;
+  align-items: center;
   width: 50%;
+}
+body header .wrap .logo {
+  justify-content: flex-start;
 }
 body header .wrap .logo span {
   width: 64px;
@@ -66,16 +102,69 @@ body header .wrap .logo p a {
   line-height: 58px;
 }
 body header .wrap .user {
+  flex-wrap: nowrap;
   justify-content: flex-end;
 }
-body header .wrap .user div {
+body header .wrap .user p {
+  font-weight: bold;
+  padding: 0px 11px;
+  word-break: break-word;
+  text-align: right;
+}
+body header .wrap .user .foto {
+  position: relative;
+  height: 70px;
+  width: 70px;
+  min-width: 70px;
+  min-height: 70px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+body header .wrap .user .foto img {
+  width: 100%;
+  border: 2px solid;
+  border-radius: 50%;
+  padding: 3px;
+}
+body header .wrap .user .foto .settings {
+  position: absolute;
+  top: 0;
+  height: 70px;
+  width: 70px;
+}
+body header .wrap .user .foto .settings div {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  position: absolute;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 2px solid;
+  border-radius: 50%;
+  background: #fff;
+  padding: 3px;
+  font-size: 14px;
 }
-body header .wrap .user div a {
+body header .wrap .user .foto .settings div i {
+  color: #111;
+}
+body header .wrap .user .foto .settings div:last-child {
+  bottom: -14px;
+  left: 48%;
+}
+body header .wrap .user .foto .settings div:first-child {
+  right: -14px;
+  top: 48%;
+}
+body header .wrap .user .social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+body header .wrap .user .social a {
   display: block;
   width: 40px;
   height: 40px;
@@ -84,10 +173,10 @@ body header .wrap .user div a {
   border-radius: 7px;
   border: 2px solid;
 }
-body header .wrap .user div a img {
+body header .wrap .user .social a img {
   width: 100%;
 }
-body header .wrap .user div a:hover {
+body header .wrap .user .social a:hover {
   border: 1px solid;
 }
 body .back_wrap {

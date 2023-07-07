@@ -6,29 +6,16 @@ $fifthColor: #c0c0c0;
 
 body {
     header {
+        color: $mainColor;
+        a {
+            color: $mainColor;
+        }
         .wrap {
             border-color: $fifthColor;
             .logo{    
                 span {
                     a {
-                        color: $mainColor;
                         background-color: $fourthColor;
-                        border-color: $mainColor;
-                    }
-                }
-                p {
-                    a {
-                        color: $mainColor;
-                    }
-                }
-            }
-            .user {
-                div {
-                    a {
-                        border-color: $thirdColor;
-                        &:hover {
-                            border-color: $thirdColor;
-                        }
                     }
                 }
             }

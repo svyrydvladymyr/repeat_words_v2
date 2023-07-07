@@ -7,18 +7,28 @@
         <div class="user">
             <% if (DATA.authorization === '1') { %>
                 <p><%= DATA.name %> <%= DATA.surname %></p>
-                <div>
+                <div class="foto">
                     <img src="<%= DATA.foto %>" alt="ava">
-                    <div class="settings"></div>
+                    <div class="settings">
+                        <div><i class="fas fa-envelope" aria-hidden="true"></i></div>
+                        <div class="drop_menu" onclick="loadStatic.showMenu()"><i class="fas fa-cogs" aria-hidden="true"></i></div>
+                    </div>
                 </div>
             <% } %>
             <% if (DATA.authorization === '0') { %>
-                <div>
+                <div class="social">
                     <a href="/google"><img src="img/google.png" alt="google"></a>
                     <a href="/linkedin"><img src="img/linkedin.png" alt="linkedin"></a>
                     <a href="/facebook"><img src="img/facebook.png" alt="facebook"></a>
                 </div>
             <% } %>
+        </div>
+        <div class="menu">
+            <ul>
+                <li>sdfsdfsdf dfgdfg dfgdfgd fgdfg dfg fgjhfg jhfgj ffghjfgjhfgjhfgj gjdfgsdfsdfsdfs</li>
+                <li>sdfsdfsdf</li>
+                <li>sdfsdfsdfsdf</li>
+            </ul>
         </div>
     </div>
 </header>

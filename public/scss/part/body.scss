@@ -20,7 +20,6 @@ body {
     min-width: 250px;
     margin: 0;
     padding: 0px;
-    // font-family: "Lato", Helvetica, Arial, sans-serif;
     font: 14px cursive;
     header {
         grid-area: header;
@@ -31,18 +30,52 @@ body {
         .wrap {
             @include display;
             justify-content: space-between;
+            position: relative;
             width: 100%;
             max-width: $maxWidth;
             border: 1px solid;
             border-radius: 15px;
             padding: 20px;
             margin: 15px 0px 0px 0px;
+            .menu {
+                display: none;
+                flex-wrap: wrap;
+                justify-content: center;
+                position: absolute;
+                min-width: 250px;
+                min-height: 10px;
+                max-width: 20px;
+                opacity: 0;
+                font-size: 3px;
+                right: 80px;
+                top: 130px;
+                background-color: #fff;
+                border: 2px solid;
+                border-radius: 6px 0px 6px 6px;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: -30px;
+                    right: -11px;
+                    width: 0px;
+                    height: 0px;
+                    border-right: 129px solid;
+                    border-bottom: 14px solid;
+                    border-top: 14px solid transparent;
+                    border-left: 114px solid transparent;
+                    transform: skew(-34deg);
+                }
+            }
+            .menu_show{
+                display: flex;
+            }
             .logo, .user {
                 @include display;
-                justify-content: flex-start;
+                align-items: center;
                 width: 50%;
             }
             .logo{    
+                justify-content: flex-start;
                 span {
                     width: 64px;
                     height: 64px;
@@ -68,11 +101,62 @@ body {
                 }
             }
             .user {
+                flex-wrap: nowrap;
                 justify-content: flex-end;
-                div {
+                p {
+                    font-weight: bold;
+                    padding: 0px 11px;
+                    word-break: break-word;
+                    text-align: right;
+                }
+                .foto {
+                    position: relative;
+                    height: 70px;
+                    width: 70px;
+                    min-width: 70px;
+                    min-height: 70px;
+                    margin-right: 20px;
+                    margin-bottom: 10px;
+                    img {
+                        width: 100%;
+                        border: 2px solid;
+                        border-radius: 50%;
+                        padding: 3px;
+                    }
+                    .settings {
+                        position: absolute;
+                        top: 0;
+                        height: 70px;
+                        width: 70px;
+                        div {
+                            @include display;
+                            align-items: center;
+                            position: absolute;
+                            cursor: pointer;
+                            width: 30px;
+                            height: 30px;
+                            border: 2px solid;
+                            border-radius: 50%;
+                            background: #fff;
+                            padding: 3px;
+                            font-size: 14px;                            
+                            i {
+                                color: #111;
+                            }
+                        }
+                        div:last-child {
+                            bottom: -14px;
+                            left: 48%;
+                        }
+                        div:first-child {
+                            right: -14px;
+                            top: 48%;
+                        }
+                    }
+                }
+                .social {
                     @include display;
                     align-items: center;
-                    height: 60px;
                     a {
                         display: block;
                         width: 40px;

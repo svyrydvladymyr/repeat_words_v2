@@ -9,6 +9,18 @@ body header .wrap {
   align-items: center;
   margin: 0px;
 }
+body header .wrap .menu {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  top: 10px;
+  right: 0;
+  border: 0;
+  border-radius: 0px;
+}
+body header .wrap .menu::before {
+  display: none;
+}
 body header .wrap .logo, body header .wrap .user {
   display: flex;
   flex-wrap: wrap;
@@ -16,13 +28,30 @@ body header .wrap .logo, body header .wrap .user {
   justify-content: center;
   width: 100%;
 }
-body header .wrap .user div {
-  margin-top: 30px;
-  height: 70px;
+body header .wrap .user p {
+  text-align: center;
 }
-body header .wrap .user div a {
+body header .wrap .user .foto .settings div {
+  width: 40px;
+  height: 40px;
+  border: 2px solid;
+  font-size: 18px;
+}
+body header .wrap .user .foto .settings div:last-child {
+  bottom: -18px;
+  left: 50%;
+}
+body header .wrap .user .foto .settings div:first-child {
+  right: -28px;
+  top: 25%;
+}
+body header .wrap .user .social {
+  margin-top: 20px;
+}
+body header .wrap .user .social a {
   width: 60px;
   height: 60px;
+  margin: 6px;
 }
 body section {
   padding: 10px;
