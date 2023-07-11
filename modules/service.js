@@ -109,7 +109,7 @@ const query = async (sql) => {
 
 const userToken = (req, res) => {
     const cookies_token = new Cookies(req, res, {"keys":[process.env.COOKIES_KEY]})
-        .get('sessionisdd', {signed:true});
+        .get('session', {signed:true});
     let bytes  = CryptoJS.AES.decrypt((cookies_token === undefined) ? 'token' : cookies_token, process.env.COOKIES_KEY);
     let token = bytes.toString(CryptoJS.enc.Utf8);
     return token;
@@ -119,13 +119,13 @@ const addCookies = (req, res, token, param) => {
     const cipher_token = CryptoJS.AES.encrypt(token, process.env.COOKIES_KEY).toString();
     const cookies = new Cookies(req, res, {"keys":[process.env.COOKIES_KEY]});
     cookies.set(
-        'sessionisdd',
+        'session',
         `${cipher_token}`,
         {
             maxAge : `${param}`,
             path : '/',
             signed : true,
-            sameSite : true,
+            sameSite : 'lax',
             secure : false
             // secure : process.env.NODE_ENV === "production" ? true : false
         }

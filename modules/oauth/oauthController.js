@@ -1,5 +1,5 @@
-const oauthService = require("./oauthService");
-// const query = require("../service").query;
+const usersService = require("../users/usersService");
+const oauthService = require("../oauth/oauthService");
 const { query, errorLog } = require("../service");
 
 class OauthController {
@@ -15,23 +15,22 @@ class OauthController {
             clientSecret: process.env.GoogleSecret,
             callbackURL: process.env.GoogleCallbackURL,
             profileFields: ["id", "displayName", "name", "gender", "profileUrl", "emails", "picture.type(large)"],
-            scope: { scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"] },
+            scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]
         },
         facebook: {
             clientID: process.env.FacebookID,
             clientSecret: process.env.FacebookSecret,
             callbackURL: process.env.FacebookCallbackURL,
             profileFields: ["id", "displayName", "name", "gender", "profileUrl", "emails", "picture.type(large)"],
-            scope: { scope: ["email"] },
+            scope: { scope: ["email"] }
         },
         linkedin: {
             clientID: process.env.LinkedinID,
             clientSecret: process.env.LinkedinSecret,
             callbackURL: process.env.LinkedinCallbackURL,
-            // profileFields: ["id", "displayName", "name", "gender", "profileUrl", "emails", "picture.type(large)"],
-            // scope: { scope: ['r_emailaddress', 'r_liteprofile'] },
-            // scope: '',
-            // state: true
+            profileFields: ["id", "displayName", "name", "gender", "profileUrl", "emails", "picture.type(large)"],
+            scope: ['r_emailaddress', 'r_liteprofile'],
+            state: true
         }
     };
 
@@ -64,9 +63,9 @@ class OauthController {
                     await query(sql)
                         .then(async (result) => {
                             if (result && result.length === 0) {
-                                await oauthService.addUser(profile, done);
+                                await usersService.addUser(profile, done);
                             } else if (result[0].userid === profile.id) {
-                                await oauthService.isUser(profile, done);
+                                await usersService.isUser(profile, done);
                             }
                         })
                         .catch((error) => {
@@ -81,7 +80,7 @@ class OauthController {
         this.create(strategy_type);
         app.get(`/${strategy_type}`, this.passport.authenticate(`${strategy_type}`, this.config[strategy_type].scope));
         app.get(`/${strategy_type}callback`, (req, res, next) => {
-            this.passport.authenticate(`${strategy_type}`, { failureRedirect: "/person", failureMessage: true }, async (error, user, info) => {
+            this.passport.authenticate(`${strategy_type}`, { successRedirect: '/', failureRedirect: "/" }, async (error, user, info) => {
                 if (error === null) {
                     await oauthService.updateToken(req, res, user.id);
                 } else {

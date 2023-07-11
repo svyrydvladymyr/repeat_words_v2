@@ -67,6 +67,12 @@ app.use((req, res, next) => {
 //pages
 app.get("/", renderPage.userData);
 app.get("/home", renderPage.userData);
+app.get("/profile", renderPage.userData);
+app.get("/settings", renderPage.userData);
+app.get("/about", renderPage.userData);
+app.get("/contacts", renderPage.userData);
+app.get("/notification", renderPage.userData);
+app.get("/friends", renderPage.userData);
 app.get("/privacy-policy", renderPage.userData);
 
 //redirect to home page

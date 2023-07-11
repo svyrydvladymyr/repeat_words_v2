@@ -5,14 +5,14 @@ $fourthColor: #e4efff;
 $fifthColor: #c0c0c0;
 
 body {
-    header {
+    color: $mainColor;
+    a {
         color: $mainColor;
-        a {
-            color: $mainColor;
-        }
+    }
+    header {
         .wrap {
             border-color: $fifthColor;
-            .logo{    
+            .logo{
                 span {
                     a {
                         background-color: $fourthColor;
@@ -21,7 +21,6 @@ body {
             }
         }
     }
-    
     .back_wrap {
         .back_body {
             a {
@@ -32,10 +31,25 @@ body {
             }
         }
     }
-
     section {
         article{
             border-color: $fifthColor;
+            .title_line {
+                border-color: $secondColor;
+            }
+            .settings_wrap {
+                > .box {
+                    border-color: $fifthColor;
+                    .interface {
+                        > .active {
+                            background-color: $fourthColor;
+                            span {
+                                background-color: $thirdColor;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

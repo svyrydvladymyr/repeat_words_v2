@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <%- include("./parts/head.ejs") %>
+</head>
+<body>
+    <%- include("./parts/header.ejs") %>
+    <%- include("./parts/back.ejs") %>
+    <section>
+        <article>
+            <div class="about_wrap">
+                <h4><%= DATA.langPack.title %></h4>
+                <p><%= DATA.langPack.list_title %></p>
+                <ul>
+                    <li><%= DATA.langPack.item1 %></li>
+                    <li><%= DATA.langPack.item2 %></li>
+                    <li><%= DATA.langPack.item3 %></li>
+                    <li><%= DATA.langPack.item4 %></li>
+                </ul>
+                <p><%= DATA.langPack.list_title2 %></p>
+                <ul>
+                    <li><%= DATA.langPack.item5 %></li>
+                    <li><%= DATA.langPack.item6 %></li>
+                    <li><%= DATA.langPack.item7 %></li>
+                    <li><%= DATA.langPack.item8 %></li>
+                    <li><%= DATA.langPack.item9 %></li>
+                </ul>
+            </div>
+        </article>
+    </section>
+    <%- include("./parts/footer.ejs") %>
+    <%- include("./parts/script.ejs") %>
+</body>

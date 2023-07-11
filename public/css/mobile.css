@@ -8,6 +8,7 @@ body header .wrap {
   flex-direction: column;
   align-items: center;
   margin: 0px;
+  padding: 20px 20px 30px 20px;
 }
 body header .wrap .menu {
   position: relative;
@@ -55,6 +56,12 @@ body header .wrap .user .social a {
 }
 body section {
   padding: 10px;
+}
+body section article .settings_wrap > .box > .body .interface div {
+  padding: 5px;
+}
+body section article .settings_wrap > .box > .body .interface div span {
+  display: none;
 }
 body footer {
   padding: 10px;

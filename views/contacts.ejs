@@ -8,9 +8,11 @@
     <%- include("./parts/back.ejs") %>
     <section>
         <article>
-            <p>home</p>
-
-
+            <div class="contacts_wrap">
+                <h4><%= DATA.langPack.title %></h4>
+                <a href="mailto:<%= DATA.langPack.email %>"><%= DATA.langPack.email %></a>
+                <a href="tel:><%= DATA.langPack.tel %>"><%= DATA.langPack.tel %></a>
+            </div>
         </article>
     </section>
     <%- include("./parts/footer.ejs") %>

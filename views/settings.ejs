@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <%- include("./parts/head.ejs") %>
+</head>
+<body>
+    <%- include("./parts/header.ejs") %>
+    <%- include("./parts/back.ejs") %>
+    <section>
+        <article>
+            <h3><%= DATA.langPack.title %><span class="title_line"></span></h3>
+            <div class="settings_wrap">
+                <div class="box">
+                    <p class="name"><%= DATA.langPack.interface %></p>
+                    <div class="body">
+                        <div class="interface">
+                            <div class="active">
+                                <p><%= DATA.langPack.en %></p>
+                                <span></span>
+                            </div>
+                            <div>
+                                <p><%= DATA.langPack.lang %></p>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <p class="name"><%= DATA.langPack.lang %></p>
+                    <div class="body">
+                        <div class="lang">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </article>
+    </section>
+    <%- include("./parts/footer.ejs") %>
+    <%- include("./parts/script.ejs") %>
+</body>

@@ -1,7 +1,7 @@
-body header {
+body {
   color: #5681bf;
 }
-body header a {
+body a {
   color: #5681bf;
 }
 body header .wrap {
@@ -18,6 +18,18 @@ body .back_wrap .back_body a:hover {
 }
 body section article {
   border-color: #c0c0c0;
+}
+body section article .title_line {
+  border-color: #687c9a;
+}
+body section article .settings_wrap > .box {
+  border-color: #c0c0c0;
+}
+body section article .settings_wrap > .box .interface > .active {
+  background-color: #e4efff;
+}
+body section article .settings_wrap > .box .interface > .active span {
+  background-color: #859fc4;
 }
 
 /*# sourceMappingURL=blue.css.map */
