@@ -67,10 +67,28 @@ body {
         padding: 10px;
         article{
             .settings_wrap {
+                margin-top: 0;
                 > .box {
+                    p {
+                        justify-content: center;
+                        align-items: flex-end;
+                    }
+                    flex-wrap: wrap;
                     > .body {
+                        height: fit-content;
+                        .lang {
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            div {
+                                width: 40%;
+                                margin: 5px;
+                            }
+                        }
                         .interface {
                             div {
+                                p {
+                                    margin: 0;
+                                }
                                 padding: 5px;
                                 span {
                                     display: none;

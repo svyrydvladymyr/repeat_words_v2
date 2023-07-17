@@ -2,6 +2,10 @@ const fs = require('fs');
 const { query, errorLog, userToken, date } = require("../service");
 
 class UsersService {
+    colorlist = ['blue', 'green', 'red', 'yellow', 'grey'];
+    langlist = ['uk-UA', 'pl-PL', 'it-IT', 'de-DE', 'es-ES', 'zh-CN'];
+    voicelist = ['Google US English', 'Google UK English Female', 'Google UK English Male'];
+
     async langPack(page, lang) {
         const pack = (fs.existsSync(`./modules/lang/${lang}.js`))
             ? require(`../lang/${lang}`)
@@ -65,6 +69,7 @@ class UsersService {
     }
 
     async defaultUser(page, lang) {
+        console.log(lang);
         const permission = {
             authorization : '0',
             rule : '0'
@@ -80,10 +85,10 @@ class UsersService {
         const settings = {
             birthday : '',
             gender : '',
-            localization : '',
+            localization : 'en-GB',
             email : '',
             emailverified : '',
-            language : lang || 'uk-UA',
+            language : 'none',
             page : page || 'home',
             voice : 'Google UK English Female',
             speed : '1',
@@ -111,17 +116,17 @@ class UsersService {
 
                 DATAS.rule = `${user.permission}`;
                 DATAS.authorization = '1';
-                DATAS.language = user.language;
-                DATAS.localization = user.localization;
+                DATAS.language = this.langlist.includes(user.language) ? user.language : 'none';
+                DATAS.localization = this.langlist.includes(user.localization) ? user.localization : 'en-GB';
                 DATAS.id = user.userid;
                 DATAS.name = user.name;
                 DATAS.surname = user.surname;
                 DATAS.foto = user.ava;
                 if (page === 'profile' || page === 'settings') {
-                    DATAS.voice = user.voice;
+                    DATAS.voice = this.voicelist.includes(user.voice) ? user.voice : 'Google UK English Female';
+                    DATAS.color = this.colorlist.includes(user.color) ? user.color : 'blue';
                     DATAS.speed = user.speed;
                     DATAS.pitch = user.pitch;
-                    DATAS.color = user.color;
                 }
                 if (page === 'profile') {
                     DATAS.email = user.email;
@@ -130,6 +135,11 @@ class UsersService {
                     DATAS.gender = user.gender;
                     DATAS.provider = user.provider;
                     DATAS.registered = date.show('yyyy-mm-dd hh:mi', user.registered);
+                }
+                if (page === 'settings') {
+                    DATAS.langlist = this.langlist;
+                    DATAS.voicelist = this.voicelist;
+                    DATAS.colorlist = this.colorlist;
                 }
                 return DATAS;
             })

@@ -57,8 +57,32 @@ body header .wrap .user .social a {
 body section {
   padding: 10px;
 }
+body section article .settings_wrap {
+  margin-top: 0;
+}
+body section article .settings_wrap > .box {
+  flex-wrap: wrap;
+}
+body section article .settings_wrap > .box p {
+  justify-content: center;
+  align-items: flex-end;
+}
+body section article .settings_wrap > .box > .body {
+  height: fit-content;
+}
+body section article .settings_wrap > .box > .body .lang {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body section article .settings_wrap > .box > .body .lang div {
+  width: 40%;
+  margin: 5px;
+}
 body section article .settings_wrap > .box > .body .interface div {
   padding: 5px;
+}
+body section article .settings_wrap > .box > .body .interface div p {
+  margin: 0;
 }
 body section article .settings_wrap > .box > .body .interface div span {
   display: none;

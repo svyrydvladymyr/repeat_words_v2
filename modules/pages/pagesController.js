@@ -8,7 +8,7 @@ class PagesController {
     async userData(req, res) {
         const path_name = Url(req.url, true).pathname.replace(/\//g, "");
         const page_name = pages_list.includes(path_name) ? path_name : "home";
-        const lang = lang_list.includes(req.cookies ? req.cookies["lang"] : undefined) ? req.cookies["lang"] : "uk-UA";
+        const lang = lang_list.includes(req.cookies ? req.cookies["lang"] : undefined) ? req.cookies["lang"] : "en-GB";
 
         console.log('pagename', page_name);
         console.log('pathname', path_name);

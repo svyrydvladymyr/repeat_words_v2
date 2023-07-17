@@ -1,5 +1,11 @@
 $maxWidth: 1200px;
 
+$colorBlue: #5681bf;
+$colorGreen: #38af5c;
+$colorRed: #a34444;
+$colorYellow: #acad48;
+$colorGrey: #797979;
+
 @mixin display {
     display: flex;
     flex-wrap: wrap;
@@ -267,9 +273,11 @@ body {
                 width: 100%;
                 max-width: 100%;
                 margin-top: 20px;
-                > .box {
+                margin-bottom: 20px;
+                .box {
                     @include display;
                     flex-wrap: nowrap;
+                    align-items: center;
                     width: 100%;
                     max-width: 600px;
                     min-height: 10px;
@@ -278,17 +286,17 @@ body {
                         @include display;
                         align-items: center;
                         justify-content: flex-start;
-                        width: 160px;
+                        width: 190px;
                         height: 45px;
                         margin: 0 10px 0 0;
                         font-weight: bold;
                         text-align: left;
                     }
-                    > .body {
+                    .body {
                         width: 100%;
                         height: 45px;
-                        margin-bottom: 30px;
-                        .interface, .lang {
+                        margin: 20px 0px;
+                        .interface, .lang, .type, .speed, .pitch, .color {
                             @include display;
                             flex-wrap: nowrap;
                             align-items: center;
@@ -299,17 +307,49 @@ body {
                                 @include display;
                                 flex-wrap: nowrap;
                                 align-items: center;
+                                margin: 0px 3px;
                                 cursor: pointer;
                                 border: 1px solid;
                                 border-radius: 6px;
-                                width: 48%;
-                                height: 40px;
                                 p {
                                     margin: 0 7px 0 0;
                                     word-break: break-word;
                                     text-align: center;
                                     line-height: 15px;
                                 }
+                            }
+                        }
+                        .speed, .pitch {
+                            input[type=range] {
+                                outline: 0;
+                                width: 100%;
+                                height: 40px;
+                                border: 1px solid;
+                                border-radius: 6px;
+                                margin-right: 10px;
+                                font-weight: bold;
+                                padding: 0px 10px;
+                            }
+                            div {
+                                width: 50px;
+                                height: 40px;
+                            }
+                        }
+                        .type {
+                            select {
+                                outline: 0;
+                                width: 100%;
+                                height: 40px;
+                                border: 1px solid;
+                                border-radius: 6px;
+                                font-weight: bold;
+                                padding: 0px 10px;
+                            }
+                        }
+                        .interface {
+                            div {
+                                width: 48%;
+                                height: 40px;
                                 span {
                                     height: 30px;
                                     width: 30px;
@@ -321,9 +361,66 @@ body {
                             }
                         }
                         .lang {
-                            > div {
+                            .active {
+                                img {
+                                    height: 70%;
+                                    opacity: 1;
+                                    border: 2px solid;
+                                    border-radius: 22px;
+                                    padding: 1px;
+                                }
+                            }
+                            div {
                                 height: 40px;
-                                max-width: 60px;
+                                min-width: 40px;
+                                width: 100%;
+                                &:hover > img {
+                                    opacity: 1;
+                                }
+                                img {
+                                    height: 70%;
+                                    opacity: 0.5;
+                                    border: 1px solid;
+                                    border-radius: 22px;
+                                    padding: 2px;
+                                }
+                            }
+                        }
+                        .color {
+                            div {
+                                width: 100%;
+                                height: 40px;
+                                min-width: 34px;
+                            }
+                            .blue, .green, .red, .yellow, .grey {
+                                padding: 5px;
+                                background-clip: content-box;
+                                opacity: 0.5;
+                                &:hover {
+                                    padding: 4px;
+                                    border: 2px solid;
+                                    opacity: 1;
+                                }
+                            }
+                            .blue {
+                                background-color: $colorBlue;
+                            }
+                            .green {
+                                background-color: $colorGreen;
+                            }
+                            .red {
+                                background-color: $colorRed;
+                            }
+                            .yellow {
+                                background-color: $colorYellow;
+                            }
+                            .grey {
+                                background-color: $colorGrey;
+                            }
+                            .active {
+                                padding: 4px;
+                                border: 2px solid;
+                                opacity: 1;
                             }
                         }
                     }
@@ -371,3 +468,84 @@ body {
     }
 }
 
+input[type=range] {
+    height: 26px;
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 100%;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 14px;
+    cursor: pointer;
+    background: #50555C;
+    border-radius: 14px;
+    border: 0px solid;
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px;
+    border: 0px solid;
+    height: 20px;
+    width: 40px;
+    border-radius: 12px;
+    background: #529DE1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -3px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #50555C;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 14px;
+    cursor: pointer;
+    background: #50555C;
+    border-radius: 14px;
+    border: 0px solid;
+}
+input[type=range]::-moz-range-thumb {
+    border: 0px solid;
+    height: 20px;
+    width: 40px;
+    border-radius: 12px;
+    background: #529DE1;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 14px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #50555C;
+    border: 0px solid;
+    border-radius: 28px;
+    box-shadow: 1px 1px 1px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #50555C;
+    border: 0px solid;
+    border-radius: 28px;
+}
+input[type=range]::-ms-thumb {
+    margin-top: 1px;
+    border: 0px solid;
+    height: 20px;
+    width: 40px;
+    border-radius: 12px;
+    background: #529DE1;
+    cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #50555C;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #50555C;
+}

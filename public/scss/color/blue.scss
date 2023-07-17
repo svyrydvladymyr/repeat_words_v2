@@ -38,10 +38,19 @@ body {
                 border-color: $secondColor;
             }
             .settings_wrap {
-                > .box {
+                .box {
                     border-color: $fifthColor;
-                    .interface {
-                        > .active {
+                    .interface, .lang, .type, .color {
+                        select {
+                            border-color: $mainColor!important;
+                            color: $mainColor!important;
+                        }
+                        div {
+                            &:hover {
+                                background-color: $fourthColor;
+                            }
+                        }
+                        .active {
                             background-color: $fourthColor;
                             span {
                                 background-color: $thirdColor;
@@ -55,3 +64,6 @@ body {
 
 }
 
+input[type=range] {
+    color: $mainColor;
+}

@@ -14,14 +14,28 @@
                     <p class="name"><%= DATA.langPack.interface %></p>
                     <div class="body">
                         <div class="interface">
-                            <div class="active">
-                                <p><%= DATA.langPack.en %></p>
-                                <span></span>
-                            </div>
-                            <div>
-                                <p><%= DATA.langPack.lang %></p>
-                                <span></span>
-                            </div>
+                            <% if (DATA.localization === 'en-GB') { %>
+                                <div class="active">
+                                    <p><%= DATA.langPack.en %></p>
+                                    <span></span>
+                                </div>
+                            <% } else { %>
+                                <div>
+                                    <p><%= DATA.langPack.en %></p>
+                                    <span></span>
+                                </div>
+                            <% } %>
+                            <% if (DATA.langlist.includes(DATA.language)) { %>
+                                <div class="active">
+                                    <p><%= DATA.langPack.lang %></p>
+                                    <span></span>
+                                </div>
+                            <% } else { %>
+                                <div>
+                                    <p><%= DATA.langPack.lang %></p>
+                                    <span></span>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -29,19 +43,64 @@
                     <p class="name"><%= DATA.langPack.lang %></p>
                     <div class="body">
                         <div class="lang">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
+                            <% for(var i=0; i < DATA.langlist.length; i++) { %>
+                                <% if (DATA.langlist.includes(DATA.language)) { %>
+                                    <div class="active"><img src="/img/lang/<%= DATA.langlist[i] %>.png" alt="<%= DATA.langlist[i] %>"></div>
+                                <% } else { %>
+                                    <div><img src="/img/lang/<%= DATA.langlist[i] %>.png" alt="<%= DATA.langlist[i] %>"></div>
+                                <% } %>
+                            <% } %>
                         </div>
                     </div>
                 </div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
+                <div class="box">
+                    <p class="name"><%= DATA.langPack.type %></p>
+                    <div class="body">
+                        <div class="type">
+                            <select>
+                                <% for(var i=0; i < DATA.voicelist.length; i++) { %>
+                                    <% if (DATA.voicelist[i] === DATA.voice) { %>
+                                        <option value="<%= DATA.voicelist[i] %>" selected><%= DATA.voicelist[i] %></option>
+                                    <% } else { %>
+                                        <option value="<%= DATA.voicelist[i] %>"><%= DATA.voicelist[i] %></option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <p class="name"><%= DATA.langPack.speed %></p>
+                    <div class="body">
+                        <div class="speed">
+                            <input type="range" min="0.5" max="2" value="1" step="0.1">
+                            <div id="speed_value"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <p class="name"><%= DATA.langPack.pitch %></p>
+                    <div class="body">
+                        <div class="pitch">
+                            <input type="range" min="0" max="2" value="1" step="0.1">
+                            <div id="pitch_value"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <p class="name"><%= DATA.langPack.color %></p>
+                    <div class="body">
+                        <div class="color">
+                            <% for(var i=0; i < DATA.colorlist.length; i++) { %>
+                                <% if (DATA.colorlist[i] === DATA.color) { %>
+                                    <div class="<%= DATA.colorlist[i] %> active"></div>
+                                <% } else { %>
+                                    <div class="<%= DATA.colorlist[i] %>"></div>
+                                <% } %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
             </div>
         </article>
     </section>

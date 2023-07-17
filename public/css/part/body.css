@@ -282,35 +282,37 @@ body section article .settings_wrap {
   width: 100%;
   max-width: 100%;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
-body section article .settings_wrap > .box {
+body section article .settings_wrap .box {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   flex-wrap: nowrap;
+  align-items: center;
   width: 100%;
   max-width: 600px;
   min-height: 10px;
   border-bottom: 1px solid;
 }
-body section article .settings_wrap > .box > p {
+body section article .settings_wrap .box > p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   justify-content: flex-start;
-  width: 160px;
+  width: 190px;
   height: 45px;
   margin: 0 10px 0 0;
   font-weight: bold;
   text-align: left;
 }
-body section article .settings_wrap > .box > .body {
+body section article .settings_wrap .box .body {
   width: 100%;
   height: 45px;
-  margin-bottom: 30px;
+  margin: 20px 0px;
 }
-body section article .settings_wrap > .box > .body .interface, body section article .settings_wrap > .box > .body .lang {
+body section article .settings_wrap .box .body .interface, body section article .settings_wrap .box .body .lang, body section article .settings_wrap .box .body .type, body section article .settings_wrap .box .body .speed, body section article .settings_wrap .box .body .pitch, body section article .settings_wrap .box .body .color {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -320,25 +322,51 @@ body section article .settings_wrap > .box > .body .interface, body section arti
   width: 100%;
   min-height: 45px;
 }
-body section article .settings_wrap > .box > .body .interface div, body section article .settings_wrap > .box > .body .lang div {
+body section article .settings_wrap .box .body .interface div, body section article .settings_wrap .box .body .lang div, body section article .settings_wrap .box .body .type div, body section article .settings_wrap .box .body .speed div, body section article .settings_wrap .box .body .pitch div, body section article .settings_wrap .box .body .color div {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   flex-wrap: nowrap;
   align-items: center;
+  margin: 0px 3px;
   cursor: pointer;
   border: 1px solid;
   border-radius: 6px;
-  width: 48%;
-  height: 40px;
 }
-body section article .settings_wrap > .box > .body .interface div p, body section article .settings_wrap > .box > .body .lang div p {
+body section article .settings_wrap .box .body .interface div p, body section article .settings_wrap .box .body .lang div p, body section article .settings_wrap .box .body .type div p, body section article .settings_wrap .box .body .speed div p, body section article .settings_wrap .box .body .pitch div p, body section article .settings_wrap .box .body .color div p {
   margin: 0 7px 0 0;
   word-break: break-word;
   text-align: center;
   line-height: 15px;
 }
-body section article .settings_wrap > .box > .body .interface div span, body section article .settings_wrap > .box > .body .lang div span {
+body section article .settings_wrap .box .body .speed input[type=range], body section article .settings_wrap .box .body .pitch input[type=range] {
+  outline: 0;
+  width: 100%;
+  height: 40px;
+  border: 1px solid;
+  border-radius: 6px;
+  margin-right: 10px;
+  font-weight: bold;
+  padding: 0px 10px;
+}
+body section article .settings_wrap .box .body .speed div, body section article .settings_wrap .box .body .pitch div {
+  width: 50px;
+  height: 40px;
+}
+body section article .settings_wrap .box .body .type select {
+  outline: 0;
+  width: 100%;
+  height: 40px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 0px 10px;
+}
+body section article .settings_wrap .box .body .interface div {
+  width: 48%;
+  height: 40px;
+}
+body section article .settings_wrap .box .body .interface div span {
   height: 30px;
   width: 30px;
   border: 2px solid;
@@ -346,9 +374,62 @@ body section article .settings_wrap > .box > .body .interface div span, body sec
   background-clip: content-box;
   padding: 3px;
 }
-body section article .settings_wrap > .box > .body .lang > div {
+body section article .settings_wrap .box .body .lang .active img {
+  height: 70%;
+  opacity: 1;
+  border: 2px solid;
+  border-radius: 22px;
+  padding: 1px;
+}
+body section article .settings_wrap .box .body .lang div {
   height: 40px;
-  max-width: 60px;
+  min-width: 40px;
+  width: 100%;
+}
+body section article .settings_wrap .box .body .lang div:hover > img {
+  opacity: 1;
+}
+body section article .settings_wrap .box .body .lang div img {
+  height: 70%;
+  opacity: 0.5;
+  border: 1px solid;
+  border-radius: 22px;
+  padding: 2px;
+}
+body section article .settings_wrap .box .body .color div {
+  width: 100%;
+  height: 40px;
+  min-width: 34px;
+}
+body section article .settings_wrap .box .body .color .blue, body section article .settings_wrap .box .body .color .green, body section article .settings_wrap .box .body .color .red, body section article .settings_wrap .box .body .color .yellow, body section article .settings_wrap .box .body .color .grey {
+  padding: 5px;
+  background-clip: content-box;
+  opacity: 0.5;
+}
+body section article .settings_wrap .box .body .color .blue:hover, body section article .settings_wrap .box .body .color .green:hover, body section article .settings_wrap .box .body .color .red:hover, body section article .settings_wrap .box .body .color .yellow:hover, body section article .settings_wrap .box .body .color .grey:hover {
+  padding: 4px;
+  border: 2px solid;
+  opacity: 1;
+}
+body section article .settings_wrap .box .body .color .blue {
+  background-color: #5681bf;
+}
+body section article .settings_wrap .box .body .color .green {
+  background-color: #38af5c;
+}
+body section article .settings_wrap .box .body .color .red {
+  background-color: #a34444;
+}
+body section article .settings_wrap .box .body .color .yellow {
+  background-color: #acad48;
+}
+body section article .settings_wrap .box .body .color .grey {
+  background-color: #797979;
+}
+body section article .settings_wrap .box .body .color .active {
+  padding: 4px;
+  border: 2px solid;
+  opacity: 1;
 }
 body footer {
   display: flex;
@@ -389,6 +470,100 @@ body footer .footer_wrap ul li a {
 }
 body footer .footer_wrap ul li a:hover {
   text-decoration-line: underline;
+}
+
+input[type=range] {
+  height: 26px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  background: #50555C;
+  border-radius: 14px;
+  border: 0px solid;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px;
+  border: 0px solid;
+  height: 20px;
+  width: 40px;
+  border-radius: 12px;
+  background: #529DE1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #50555C;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  background: #50555C;
+  border-radius: 14px;
+  border: 0px solid;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: 0px solid;
+  height: 20px;
+  width: 40px;
+  border-radius: 12px;
+  background: #529DE1;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #50555C;
+  border: 0px solid;
+  border-radius: 28px;
+  box-shadow: 1px 1px 1px;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: #50555C;
+  border: 0px solid;
+  border-radius: 28px;
+}
+
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  border: 0px solid;
+  height: 20px;
+  width: 40px;
+  border-radius: 12px;
+  background: #529DE1;
+  cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #50555C;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #50555C;
 }
 
 /*# sourceMappingURL=body.css.map */

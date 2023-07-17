@@ -164,7 +164,7 @@ class Services {
 
     async getLang() {
         let matches = document.cookie.match(new RegExp("(?:^|; )" + 'lang'.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-        this.language = matches ? decodeURIComponent(matches[1]).slice(0, 2) : 'uk';
+        this.language = matches ? decodeURIComponent(matches[1]).slice(0, 2) : 'en';
     }
 };
 
