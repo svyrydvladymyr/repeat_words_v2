@@ -314,8 +314,45 @@ class Calendar extends ModalWindow {
     };
 };
 
+class Settings {
+    disable(child_list) {
+
+    }
+
+    enable(child_list) {
+
+    }
+
+    save(value, param, child_list) {
+        fetch(`/settings/${param}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json;charset=utf-8' },
+            body: JSON.stringify({ value }) })
+        .then(response => response.status === 200 && response.json())
+        .then(resultat => {
+            if (!resultat) { throw new Error() };
+            if (resultat.res) {
+
+            };
+        })
+        .catch(() => {
+            const error_body = service.$(`.settings_error`)[0];
+            error_body.style.display = 'block';
+            setTimeout(() => {
+                error_body.style.display = 'none';
+            }, 3000);
+        });
+    }
+
+    language(value) {
+        this.save(value, 'language');
+    }
+
+}
+
 const validation = new ValidationClass();
 const service = new Services();
+const settings = new Settings();
 const loadStatic = new Static();
 const date = new ShowDate();
 const calendar = new Calendar();

@@ -9,6 +9,7 @@
     <section>
         <article>
             <h3><%= DATA.langPack.title %><span class="title_line"></span></h3>
+            <p class="settings_error"><%= DATA.langPack.error %></p>
             <div class="settings_wrap">
                 <div class="box">
                     <p class="name"><%= DATA.langPack.interface %></p>
@@ -45,9 +46,9 @@
                         <div class="lang">
                             <% for(var i=0; i < DATA.langlist.length; i++) { %>
                                 <% if (DATA.langlist.includes(DATA.language)) { %>
-                                    <div class="active"><img src="/img/lang/<%= DATA.langlist[i] %>.png" alt="<%= DATA.langlist[i] %>"></div>
+                                    <div class="active" onclick="settings.language('<%= DATA.langlist[i] %>')"><img src="/img/lang/<%= DATA.langlist[i] %>.png" alt="<%= DATA.langlist[i] %>"></div>
                                 <% } else { %>
-                                    <div><img src="/img/lang/<%= DATA.langlist[i] %>.png" alt="<%= DATA.langlist[i] %>"></div>
+                                    <div onclick="settings.language('<%= DATA.langlist[i] %>')"><img src="/img/lang/<%= DATA.langlist[i] %>.png" alt="<%= DATA.langlist[i] %>"></div>
                                 <% } %>
                             <% } %>
                         </div>

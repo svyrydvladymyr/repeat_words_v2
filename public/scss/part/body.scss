@@ -250,6 +250,9 @@ body {
                 @include display;
                 position: relative;
             }
+            .settings_error{
+                display: none;
+            }
             .title_line {
                 position: absolute;
                 width: 90%;

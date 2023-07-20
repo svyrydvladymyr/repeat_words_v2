@@ -21,7 +21,7 @@ const DB = require('./modules/db-models/createDB');
 
 //routs
 const renderPage = require("./modules/pages/pagesController");
-// const towns = require("./modules/towns/routers");
+const settings = require("./modules/settings/routers");
 
 //oaugh
 const oaugh = require("./modules/oauth/oauthController.js");
@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 });
 
 //routs
-// app.use("/towns", towns);
+app.use("/settings", settings);
 
 app.use((req, res, next) => {
     (req.url.slice(-1) === '/' && req.url.length > 1 && !/\?[^]*\//.test(req.url))

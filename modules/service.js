@@ -145,7 +145,7 @@ const user = (req, res, next) => {
 };
 
 const autorisation = (req, res, next) => {
-    const userInfo = 'userid, email, phone, phone_verified, permission';
+    const userInfo = 'userid, email, permission';
     query(`SELECT ${userInfo} FROM users WHERE token = '${userToken(req, res)}'`)
         .then((user) => {
             req.user = user;

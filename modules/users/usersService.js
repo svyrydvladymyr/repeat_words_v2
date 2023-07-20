@@ -1,11 +1,8 @@
 const fs = require('fs');
 const { query, errorLog, userToken, date } = require("../service");
+const settings = require("../settings/settingsService");
 
 class UsersService {
-    colorlist = ['blue', 'green', 'red', 'yellow', 'grey'];
-    langlist = ['uk-UA', 'pl-PL', 'it-IT', 'de-DE', 'es-ES', 'zh-CN'];
-    voicelist = ['Google US English', 'Google UK English Female', 'Google UK English Male'];
-
     async langPack(page, lang) {
         const pack = (fs.existsSync(`./modules/lang/${lang}.js`))
             ? require(`../lang/${lang}`)
@@ -116,15 +113,15 @@ class UsersService {
 
                 DATAS.rule = `${user.permission}`;
                 DATAS.authorization = '1';
-                DATAS.language = this.langlist.includes(user.language) ? user.language : 'none';
-                DATAS.localization = this.langlist.includes(user.localization) ? user.localization : 'en-GB';
+                DATAS.language = settings.langlist.includes(user.language) ? user.language : 'none';
+                DATAS.localization = settings.langlist.includes(user.localization) ? user.localization : 'en-GB';
                 DATAS.id = user.userid;
                 DATAS.name = user.name;
                 DATAS.surname = user.surname;
                 DATAS.foto = user.ava;
                 if (page === 'profile' || page === 'settings') {
-                    DATAS.voice = this.voicelist.includes(user.voice) ? user.voice : 'Google UK English Female';
-                    DATAS.color = this.colorlist.includes(user.color) ? user.color : 'blue';
+                    DATAS.voice = settings.voicelist.includes(user.voice) ? user.voice : 'Google UK English Female';
+                    DATAS.color = settings.colorlist.includes(user.color) ? user.color : 'blue';
                     DATAS.speed = user.speed;
                     DATAS.pitch = user.pitch;
                 }
@@ -137,9 +134,9 @@ class UsersService {
                     DATAS.registered = date.show('yyyy-mm-dd hh:mi', user.registered);
                 }
                 if (page === 'settings') {
-                    DATAS.langlist = this.langlist;
-                    DATAS.voicelist = this.voicelist;
-                    DATAS.colorlist = this.colorlist;
+                    DATAS.langlist = settings.langlist;
+                    DATAS.voicelist = settings.voicelist;
+                    DATAS.colorlist = settings.colorlist;
                 }
                 return DATAS;
             })

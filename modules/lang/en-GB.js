@@ -31,6 +31,7 @@ module.exports = {
         pitch : "Tone pitch"
     },
     settings : {
+        error : "An error occurred! Try again.",
         title : "Settings",
         interface : "Interface language",
         lang : "My language",

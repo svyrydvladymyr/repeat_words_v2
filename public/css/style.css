@@ -257,6 +257,9 @@ body section article h3 {
   justify-content: center;
   position: relative;
 }
+body section article .settings_error {
+  display: none;
+}
 body section article .title_line {
   position: absolute;
   width: 90%;
