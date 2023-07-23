@@ -25,15 +25,15 @@ body section article .title_line {
 body section article .settings_wrap .box {
   border-color: #c0c0c0;
 }
-body section article .settings_wrap .box .interface select, body section article .settings_wrap .box .lang select, body section article .settings_wrap .box .type select, body section article .settings_wrap .box .color select {
+body section article .settings_wrap .box .interface select, body section article .settings_wrap .box .interface button, body section article .settings_wrap .box .lang select, body section article .settings_wrap .box .lang button, body section article .settings_wrap .box .type select, body section article .settings_wrap .box .type button, body section article .settings_wrap .box .color select, body section article .settings_wrap .box .color button {
   border-color: #5681bf !important;
   color: #5681bf !important;
 }
-body section article .settings_wrap .box .interface div:hover, body section article .settings_wrap .box .lang div:hover, body section article .settings_wrap .box .type div:hover, body section article .settings_wrap .box .color div:hover {
+body section article .settings_wrap .box .interface div:hover, body section article .settings_wrap .box .interface button:hover, body section article .settings_wrap .box .lang div:hover, body section article .settings_wrap .box .lang button:hover, body section article .settings_wrap .box .type div:hover, body section article .settings_wrap .box .type button:hover, body section article .settings_wrap .box .color div:hover, body section article .settings_wrap .box .color button:hover {
   background-color: #e4efff;
 }
 body section article .settings_wrap .box .interface .active, body section article .settings_wrap .box .lang .active, body section article .settings_wrap .box .type .active, body section article .settings_wrap .box .color .active {
-  background-color: #e4efff;
+  background-color: #e4efff !important;
 }
 body section article .settings_wrap .box .interface .active span, body section article .settings_wrap .box .lang .active span, body section article .settings_wrap .box .type .active span, body section article .settings_wrap .box .color .active span {
   background-color: #859fc4;

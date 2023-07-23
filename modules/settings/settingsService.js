@@ -5,6 +5,12 @@ class SettingsService {
     langlist = ['uk-UA', 'pl-PL', 'it-IT', 'de-DE', 'es-ES', 'zh-CN'];
     voicelist = ['Google US English', 'Google UK English Female', 'Google UK English Male'];
 
+    async validation(value) {
+        if (!this.langlist.includes(value)) {
+            throw new Error('Bad value!');
+        };
+    }
+
     async save(body) {
 
         console.log('body', body);
@@ -22,7 +28,8 @@ class SettingsService {
     }
 
     async language(body) {
-        return (this.langlist.includes(body.value)) ? await this.save(body) : new Error('Bad value!');
+        await this.validation(body.value);
+        return await this.save(body);
     }
 
     // async delete(body, req) {

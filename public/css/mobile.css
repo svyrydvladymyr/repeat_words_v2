@@ -74,7 +74,7 @@ body section article .settings_wrap > .box > .body .lang {
   flex-wrap: wrap;
   justify-content: center;
 }
-body section article .settings_wrap > .box > .body .lang div {
+body section article .settings_wrap > .box > .body .lang button {
   width: 40%;
   margin: 5px;
 }

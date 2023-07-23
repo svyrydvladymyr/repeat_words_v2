@@ -8,7 +8,6 @@ class SettingsController {
             req.body.route = url;
             req.body.user = req.user[0].userid;
             const query_res = await settingsService[`${url}`](req.body, req, res);
-            console.log('query_res', query_res);
             res.send({ res: query_res });
         } catch (error) {
             errorLog(error, 'error', 'settings', req);

@@ -315,37 +315,46 @@ class Calendar extends ModalWindow {
 };
 
 class Settings {
-    disable(child_list) {
-
-    }
-
-    enable(child_list) {
-
-    }
-
-    save(value, param, child_list) {
-        fetch(`/settings/${param}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json;charset=utf-8' },
-            body: JSON.stringify({ value }) })
-        .then(response => response.status === 200 && response.json())
-        .then(resultat => {
-            if (!resultat) { throw new Error() };
-            if (resultat.res) {
-
-            };
-        })
-        .catch(() => {
-            const error_body = service.$(`.settings_error`)[0];
-            error_body.style.display = 'block';
-            setTimeout(() => {
-                error_body.style.display = 'none';
-            }, 3000);
+    disable(list, value) {
+        [...list].forEach(element => {
+            element.disabled = value;
         });
     }
 
-    language(value) {
-        this.save(value, 'language');
+    // enable(list) {
+    //     [...list].forEach(element => {
+    //         element.disabled = false;
+    //     });
+    // }
+
+    async save(value, param, list) {
+        return new Promise((resolve) => {
+            this.disable(list, true);
+            fetch(`/settings/${param}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json;charset=utf-8' },
+                body: JSON.stringify({ value }) })
+            .then(response => response.status === 200 && response.json())
+            .then(resultat => {
+                if (!resultat) { throw new Error() };
+                if (resultat.res) {
+                    resolve(true);
+                };
+            })
+            .catch(() => {
+                const error_body = service.$(`.settings_error > span`)[0];
+                error_body.style.display = 'block';
+                setTimeout(() => {
+                    error_body.style.display = 'none';
+                    this.disable(list, false);
+                }, 5000);
+            });
+        });
+    }
+
+    async language(value) {
+        const list = service.$('.lang')[0].children;
+        await this.save(value, 'language', list) && location.reload();
     }
 
 }

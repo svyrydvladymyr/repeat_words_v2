@@ -14,6 +14,25 @@ body {
   padding: 0px;
   font: 14px cursive;
 }
+body .settings_error {
+  width: 100%;
+  height: 24px;
+  margin: 10px 0 0 0;
+  padding: 0px 10px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+body .settings_error span {
+  display: none;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #a34444;
+  background: #fdf2f2;
+  padding: 47px;
+  height: 120px;
+}
 body header {
   grid-area: header;
   display: flex;
@@ -257,9 +276,6 @@ body section article h3 {
   justify-content: center;
   position: relative;
 }
-body section article .settings_error {
-  display: none;
-}
 body section article .title_line {
   position: absolute;
   width: 90%;
@@ -284,8 +300,8 @@ body section article .settings_wrap {
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  padding-top: 2px;
 }
 body section article .settings_wrap .box {
   display: flex;
@@ -325,7 +341,7 @@ body section article .settings_wrap .box .body .interface, body section article 
   width: 100%;
   min-height: 45px;
 }
-body section article .settings_wrap .box .body .interface div, body section article .settings_wrap .box .body .lang div, body section article .settings_wrap .box .body .type div, body section article .settings_wrap .box .body .speed div, body section article .settings_wrap .box .body .pitch div, body section article .settings_wrap .box .body .color div {
+body section article .settings_wrap .box .body .interface div, body section article .settings_wrap .box .body .interface button, body section article .settings_wrap .box .body .lang div, body section article .settings_wrap .box .body .lang button, body section article .settings_wrap .box .body .type div, body section article .settings_wrap .box .body .type button, body section article .settings_wrap .box .body .speed div, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch div, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color div, body section article .settings_wrap .box .body .color button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -336,11 +352,14 @@ body section article .settings_wrap .box .body .interface div, body section arti
   border: 1px solid;
   border-radius: 6px;
 }
-body section article .settings_wrap .box .body .interface div p, body section article .settings_wrap .box .body .lang div p, body section article .settings_wrap .box .body .type div p, body section article .settings_wrap .box .body .speed div p, body section article .settings_wrap .box .body .pitch div p, body section article .settings_wrap .box .body .color div p {
+body section article .settings_wrap .box .body .interface div p, body section article .settings_wrap .box .body .interface button p, body section article .settings_wrap .box .body .lang div p, body section article .settings_wrap .box .body .lang button p, body section article .settings_wrap .box .body .type div p, body section article .settings_wrap .box .body .type button p, body section article .settings_wrap .box .body .speed div p, body section article .settings_wrap .box .body .speed button p, body section article .settings_wrap .box .body .pitch div p, body section article .settings_wrap .box .body .pitch button p, body section article .settings_wrap .box .body .color div p, body section article .settings_wrap .box .body .color button p {
   margin: 0 7px 0 0;
   word-break: break-word;
   text-align: center;
   line-height: 15px;
+}
+body section article .settings_wrap .box .body .interface button, body section article .settings_wrap .box .body .lang button, body section article .settings_wrap .box .body .type button, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color button {
+  background: #fff;
 }
 body section article .settings_wrap .box .body .speed input[type=range], body section article .settings_wrap .box .body .pitch input[type=range] {
   outline: 0;
@@ -384,15 +403,18 @@ body section article .settings_wrap .box .body .lang .active img {
   border-radius: 22px;
   padding: 1px;
 }
-body section article .settings_wrap .box .body .lang div {
+body section article .settings_wrap .box .body .lang button {
   height: 40px;
   min-width: 40px;
   width: 100%;
 }
-body section article .settings_wrap .box .body .lang div:hover > img {
+body section article .settings_wrap .box .body .lang button:hover > img {
   opacity: 1;
 }
-body section article .settings_wrap .box .body .lang div img {
+body section article .settings_wrap .box .body .lang button:disabled {
+  cursor: no-drop;
+}
+body section article .settings_wrap .box .body .lang button img {
   height: 70%;
   opacity: 0.5;
   border: 1px solid;

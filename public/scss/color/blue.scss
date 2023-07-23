@@ -41,17 +41,17 @@ body {
                 .box {
                     border-color: $fifthColor;
                     .interface, .lang, .type, .color {
-                        select {
+                        select, button {
                             border-color: $mainColor!important;
                             color: $mainColor!important;
                         }
-                        div {
+                        div, button {
                             &:hover {
                                 background-color: $fourthColor;
                             }
                         }
                         .active {
-                            background-color: $fourthColor;
+                            background-color: $fourthColor!important;
                             span {
                                 background-color: $thirdColor;
                             }

@@ -27,6 +27,25 @@ body {
     margin: 0;
     padding: 0px;
     font: 14px cursive;
+    .settings_error{
+        width: 100%;
+        height: 24px;
+        margin: 10px 0 0 0;
+        padding: 0px 10px;
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        span {
+            display: none;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #a34444;
+            background: #fdf2f2;
+            padding: 47px;
+            height: 120px;
+        }
+    }
     header {
         grid-area: header;
         @include display;
@@ -250,9 +269,6 @@ body {
                 @include display;
                 position: relative;
             }
-            .settings_error{
-                display: none;
-            }
             .title_line {
                 position: absolute;
                 width: 90%;
@@ -275,8 +291,8 @@ body {
                 @include display;
                 width: 100%;
                 max-width: 100%;
-                margin-top: 20px;
-                margin-bottom: 20px;
+                margin-bottom: 40px;
+                padding-top: 2px;
                 .box {
                     @include display;
                     flex-wrap: nowrap;
@@ -306,7 +322,7 @@ body {
                             justify-content: space-between;
                             width: 100%;
                             min-height: 45px;
-                            div {
+                            div, button {
                                 @include display;
                                 flex-wrap: nowrap;
                                 align-items: center;
@@ -320,6 +336,9 @@ body {
                                     text-align: center;
                                     line-height: 15px;
                                 }
+                            }
+                            button {
+                                background: #fff;
                             }
                         }
                         .speed, .pitch {
@@ -373,12 +392,15 @@ body {
                                     padding: 1px;
                                 }
                             }
-                            div {
+                            button {
                                 height: 40px;
                                 min-width: 40px;
                                 width: 100%;
                                 &:hover > img {
                                     opacity: 1;
+                                }
+                                &:disabled {
+                                    cursor: no-drop;
                                 }
                                 img {
                                     height: 70%;
