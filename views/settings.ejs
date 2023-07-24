@@ -14,28 +14,28 @@
                 <div class="box">
                     <p class="name"><%= DATA.langPack.interface %></p>
                     <div class="body">
-                        <div class="interface">
+                        <div class="localization">
                             <% if (DATA.localization === 'en-GB') { %>
-                                <div class="active">
+                                <button class="active" onclick="settings.localization('en-GB')">
                                     <p><%= DATA.langPack.en %></p>
                                     <span></span>
-                                </div>
+                                </button>
                             <% } else { %>
-                                <div>
+                                <button onclick="settings.localization('en-GB')">
                                     <p><%= DATA.langPack.en %></p>
                                     <span></span>
-                                </div>
+                                </button>
                             <% } %>
                             <% if (DATA.localization === 'my') { %>
-                                <div class="active">
+                                <button class="active" onclick="settings.localization('my')">
                                     <p><%= DATA.langPack.lang %></p>
                                     <span></span>
-                                </div>
+                                </button>
                             <% } else { %>
-                                <div>
+                                <button onclick="settings.localization('my')">
                                     <p><%= DATA.langPack.lang %></p>
                                     <span></span>
-                                </div>
+                                </button>
                             <% } %>
                         </div>
                     </div>

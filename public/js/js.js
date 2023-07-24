@@ -107,7 +107,7 @@ class Services {
         create: "POST",
         edit: "PUT",
     }
-    language = 'uk';
+    language = 'en';
     lang = {};
 
     constructor(){}
@@ -149,17 +149,16 @@ class Services {
         return res;
     }
 
+    setLang = (lang) => {
+        document.cookie = `lang=${lang}`;
+    }
+
     async languagePack(lang) {
         return new Promise((resolve, reject) => {
             fetch(`./json/${lang}.json`)
             .then(response =>  response.json())
             .then(response => resolve(response))
         });
-    }
-
-    setLang = (lang) => {
-        document.cookie = `lang=${lang}`;
-        document.location.reload();
     }
 
     async getLang() {
@@ -321,12 +320,6 @@ class Settings {
         });
     }
 
-    // enable(list) {
-    //     [...list].forEach(element => {
-    //         element.disabled = false;
-    //     });
-    // }
-
     async save(value, param, list) {
         return new Promise((resolve) => {
             this.disable(list, true);
@@ -354,7 +347,14 @@ class Settings {
 
     async language(value) {
         const list = service.$('.lang')[0].children;
+        service.setLang(value);
         await this.save(value, 'language', list) && location.reload();
+    }
+
+    async localization(value) {
+        const list = service.$('.localization')[0].children;
+        value === 'en-GB' && service.setLang(value);
+        await this.save(value, 'localization', list) && location.reload();
     }
 
 }

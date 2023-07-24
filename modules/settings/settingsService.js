@@ -1,20 +1,21 @@
 const {query} = require('../service');
 
 class SettingsService {
-    colorlist = ['blue', 'green', 'red', 'yellow', 'grey'];
-    langlist = ['uk-UA', 'pl-PL', 'it-IT', 'de-DE', 'es-ES', 'zh-CN'];
-    voicelist = ['Google US English', 'Google UK English Female', 'Google UK English Male'];
+    lists = {
+        local : ['en-GB', 'my'],
+        color : ['blue', 'green', 'red', 'yellow', 'grey'],
+        lang : ['uk-UA', 'pl-PL', 'it-IT', 'de-DE', 'es-ES', 'zh-CN'],
+        voice : ['Google US English', 'Google UK English Female', 'Google UK English Male']
+    }
 
-    async validation(value) {
-        if (!this.langlist.includes(value)) {
+
+    async validation(value, list) {
+        if (!this.lists[list].includes(value)) {
             throw new Error('Bad value!');
         };
     }
 
     async save(body) {
-
-        console.log('body', body);
-
         const sql = `UPDATE settings
             SET ${body.route}='${body.value}'
             WHERE userid='${body.user}'`;
@@ -23,12 +24,12 @@ class SettingsService {
     }
 
     async localization(body) {
-
+        await this.validation(body.value, 'local');
         return await this.save(body);
     }
 
     async language(body) {
-        await this.validation(body.value);
+        await this.validation(body.value, 'lang');
         return await this.save(body);
     }
 

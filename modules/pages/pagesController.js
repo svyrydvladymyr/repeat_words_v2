@@ -2,7 +2,7 @@ const Url = require('url-parse');
 const errorLog = require('../service').errorLog;
 const usersService = require('../users/usersService');
 const pages_list = ['home', 'about', 'contacts', 'profile', 'settings', 'notification', 'friends', 'privacy-policy'];
-const lang_list = ['uk-UA', 'en-GB'];
+const lang_list = ['uk-UA', 'pl-PL', 'it-IT', 'de-DE', 'es-ES', 'zh-CN', 'en-GB'];
 
 class PagesController {
     async userData(req, res) {

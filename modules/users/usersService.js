@@ -6,7 +6,7 @@ class UsersService {
     async langPack(page, lang) {
         const pack = (fs.existsSync(`./modules/lang/${lang}.js`))
             ? require(`../lang/${lang}`)
-            : require(`../lang/uk-UA`);
+            : require(`../lang/en-GB`);
         return {...pack['main'], ...pack[`${page}`]};
     };
 
@@ -105,7 +105,7 @@ class UsersService {
                     WHERE users.token = '${userToken(req, res)}'`;
         return await query(sql)
             .then((user) => user[0])
-            .then((user) => {
+            .then(async (user) => {
 
                 console.log('user', user);
 
@@ -113,15 +113,16 @@ class UsersService {
 
                 DATAS.rule = `${user.permission}`;
                 DATAS.authorization = '1';
-                DATAS.language = settings.langlist.includes(user.language) ? user.language : 'none';
-                DATAS.localization = settings.langlist.includes(user.localization) ? user.localization : 'en-GB';
+                DATAS.language = settings.lists.lang.includes(user.language) ? user.language : 'none';
+                DATAS.localization = user.localization === 'my' ? 'my' : 'en-GB';
                 DATAS.id = user.userid;
                 DATAS.name = user.name;
                 DATAS.surname = user.surname;
                 DATAS.foto = user.ava;
+                DATAS.langPack = await this.langPack(page, DATAS.localization === 'my' ? DATAS.language : 'en-GB');
                 if (page === 'profile' || page === 'settings') {
-                    DATAS.voice = settings.voicelist.includes(user.voice) ? user.voice : 'Google UK English Female';
-                    DATAS.color = settings.colorlist.includes(user.color) ? user.color : 'blue';
+                    DATAS.voice = settings.lists.voice.includes(user.voice) ? user.voice : 'Google UK English Female';
+                    DATAS.color = settings.lists.color.includes(user.color) ? user.color : 'blue';
                     DATAS.speed = user.speed;
                     DATAS.pitch = user.pitch;
                 }
@@ -134,9 +135,9 @@ class UsersService {
                     DATAS.registered = date.show('yyyy-mm-dd hh:mi', user.registered);
                 }
                 if (page === 'settings') {
-                    DATAS.langlist = settings.langlist;
-                    DATAS.voicelist = settings.voicelist;
-                    DATAS.colorlist = settings.colorlist;
+                    DATAS.langlist = settings.lists.lang;
+                    DATAS.voicelist = settings.lists.voice;
+                    DATAS.colorlist = settings.lists.color;
                 }
                 return DATAS;
             })

@@ -331,7 +331,7 @@ body section article .settings_wrap .box .body {
   height: 45px;
   margin: 20px 0px;
 }
-body section article .settings_wrap .box .body .interface, body section article .settings_wrap .box .body .lang, body section article .settings_wrap .box .body .type, body section article .settings_wrap .box .body .speed, body section article .settings_wrap .box .body .pitch, body section article .settings_wrap .box .body .color {
+body section article .settings_wrap .box .body .localization, body section article .settings_wrap .box .body .lang, body section article .settings_wrap .box .body .type, body section article .settings_wrap .box .body .speed, body section article .settings_wrap .box .body .pitch, body section article .settings_wrap .box .body .color {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -341,7 +341,7 @@ body section article .settings_wrap .box .body .interface, body section article 
   width: 100%;
   min-height: 45px;
 }
-body section article .settings_wrap .box .body .interface div, body section article .settings_wrap .box .body .interface button, body section article .settings_wrap .box .body .lang div, body section article .settings_wrap .box .body .lang button, body section article .settings_wrap .box .body .type div, body section article .settings_wrap .box .body .type button, body section article .settings_wrap .box .body .speed div, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch div, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color div, body section article .settings_wrap .box .body .color button {
+body section article .settings_wrap .box .body .localization div, body section article .settings_wrap .box .body .localization button, body section article .settings_wrap .box .body .lang div, body section article .settings_wrap .box .body .lang button, body section article .settings_wrap .box .body .type div, body section article .settings_wrap .box .body .type button, body section article .settings_wrap .box .body .speed div, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch div, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color div, body section article .settings_wrap .box .body .color button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -352,13 +352,13 @@ body section article .settings_wrap .box .body .interface div, body section arti
   border: 1px solid;
   border-radius: 6px;
 }
-body section article .settings_wrap .box .body .interface div p, body section article .settings_wrap .box .body .interface button p, body section article .settings_wrap .box .body .lang div p, body section article .settings_wrap .box .body .lang button p, body section article .settings_wrap .box .body .type div p, body section article .settings_wrap .box .body .type button p, body section article .settings_wrap .box .body .speed div p, body section article .settings_wrap .box .body .speed button p, body section article .settings_wrap .box .body .pitch div p, body section article .settings_wrap .box .body .pitch button p, body section article .settings_wrap .box .body .color div p, body section article .settings_wrap .box .body .color button p {
+body section article .settings_wrap .box .body .localization div p, body section article .settings_wrap .box .body .localization button p, body section article .settings_wrap .box .body .lang div p, body section article .settings_wrap .box .body .lang button p, body section article .settings_wrap .box .body .type div p, body section article .settings_wrap .box .body .type button p, body section article .settings_wrap .box .body .speed div p, body section article .settings_wrap .box .body .speed button p, body section article .settings_wrap .box .body .pitch div p, body section article .settings_wrap .box .body .pitch button p, body section article .settings_wrap .box .body .color div p, body section article .settings_wrap .box .body .color button p {
   margin: 0 7px 0 0;
   word-break: break-word;
   text-align: center;
   line-height: 15px;
 }
-body section article .settings_wrap .box .body .interface button, body section article .settings_wrap .box .body .lang button, body section article .settings_wrap .box .body .type button, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color button {
+body section article .settings_wrap .box .body .localization button, body section article .settings_wrap .box .body .lang button, body section article .settings_wrap .box .body .type button, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color button {
   background: #fff;
 }
 body section article .settings_wrap .box .body .speed input[type=range], body section article .settings_wrap .box .body .pitch input[type=range] {
@@ -384,11 +384,14 @@ body section article .settings_wrap .box .body .type select {
   font-weight: bold;
   padding: 0px 10px;
 }
-body section article .settings_wrap .box .body .interface div {
+body section article .settings_wrap .box .body .localization button {
   width: 48%;
   height: 40px;
 }
-body section article .settings_wrap .box .body .interface div span {
+body section article .settings_wrap .box .body .localization button:disabled {
+  cursor: no-drop;
+}
+body section article .settings_wrap .box .body .localization button span {
   height: 30px;
   width: 30px;
   border: 2px solid;

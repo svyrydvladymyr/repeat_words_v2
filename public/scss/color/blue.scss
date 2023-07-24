@@ -40,7 +40,7 @@ body {
             .settings_wrap {
                 .box {
                     border-color: $fifthColor;
-                    .interface, .lang, .type, .color {
+                    .localization, .lang, .type, .color {
                         select, button {
                             border-color: $mainColor!important;
                             color: $mainColor!important;

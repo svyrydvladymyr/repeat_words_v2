@@ -78,14 +78,14 @@ body {
                         height: fit-content;
                         .lang {
                             flex-wrap: wrap;
-                            justify-content: center;
+                            justify-content: space-between;
                             button {
-                                width: 40%;
-                                margin: 5px;
+                                width: 46%;
+                                margin: 5px 3px;
                             }
                         }
-                        .interface {
-                            div {
+                        .localization {
+                            button {
                                 p {
                                     margin: 0;
                                 }

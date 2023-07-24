@@ -315,7 +315,7 @@ body {
                         width: 100%;
                         height: 45px;
                         margin: 20px 0px;
-                        .interface, .lang, .type, .speed, .pitch, .color {
+                        .localization, .lang, .type, .speed, .pitch, .color {
                             @include display;
                             flex-wrap: nowrap;
                             align-items: center;
@@ -368,10 +368,13 @@ body {
                                 padding: 0px 10px;
                             }
                         }
-                        .interface {
-                            div {
+                        .localization {
+                            button {
                                 width: 48%;
                                 height: 40px;
+                                &:disabled {
+                                    cursor: no-drop;
+                                }
                                 span {
                                     height: 30px;
                                     width: 30px;

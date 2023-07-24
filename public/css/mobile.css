@@ -72,19 +72,19 @@ body section article .settings_wrap > .box > .body {
 }
 body section article .settings_wrap > .box > .body .lang {
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 body section article .settings_wrap > .box > .body .lang button {
-  width: 40%;
-  margin: 5px;
+  width: 46%;
+  margin: 5px 3px;
 }
-body section article .settings_wrap > .box > .body .interface div {
+body section article .settings_wrap > .box > .body .localization button {
   padding: 5px;
 }
-body section article .settings_wrap > .box > .body .interface div p {
+body section article .settings_wrap > .box > .body .localization button p {
   margin: 0;
 }
-body section article .settings_wrap > .box > .body .interface div span {
+body section article .settings_wrap > .box > .body .localization button span {
   display: none;
 }
 body footer {
