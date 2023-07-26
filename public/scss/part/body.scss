@@ -28,6 +28,8 @@ body {
     padding: 0px;
     font: 14px cursive;
     .settings_error{
+        @include display;
+        align-items: center;
         width: 100%;
         height: 24px;
         margin: 10px 0 0 0;
@@ -37,13 +39,30 @@ body {
         z-index: 999;
         span {
             display: none;
-            width: 100%;
+            position: absolute;
+            top: 0;
+            width: 97vw;
+            height: 98vh;
             text-align: center;
             font-weight: bold;
-            border: 1px solid #a34444;
-            background: #fdf2f2;
+            background: #ffdcdc;
+            margin: 0px auto;
             padding: 47px;
-            height: 120px;
+            opacity: 0.6;
+        }
+        b {
+            display: none;
+            position: absolute;
+            top: 40vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 70vw;
+            height: 20vh;
+            padding: 20px;
+            background: #ffffff;
+            border: 2px solid #ffdada;
+            border-radius: 110px;
         }
     }
     header {
@@ -315,13 +334,18 @@ body {
                         width: 100%;
                         height: 45px;
                         margin: 20px 0px;
-                        .localization, .lang, .type, .speed, .pitch, .color {
+                        .localization, .language, .voice, .speed, .pitch, .color {
                             @include display;
                             flex-wrap: nowrap;
                             align-items: center;
                             justify-content: space-between;
                             width: 100%;
                             min-height: 45px;
+                            button, select {
+                                &:disabled {
+                                    cursor: no-drop;
+                                }
+                            }
                             div, button {
                                 @include display;
                                 flex-wrap: nowrap;
@@ -357,7 +381,7 @@ body {
                                 height: 40px;
                             }
                         }
-                        .type {
+                        .voice {
                             select {
                                 outline: 0;
                                 width: 100%;
@@ -372,9 +396,6 @@ body {
                             button {
                                 width: 48%;
                                 height: 40px;
-                                &:disabled {
-                                    cursor: no-drop;
-                                }
                                 span {
                                     height: 30px;
                                     width: 30px;
@@ -385,7 +406,7 @@ body {
                                 }
                             }
                         }
-                        .lang {
+                        .language {
                             .active {
                                 img {
                                     height: 70%;
@@ -402,9 +423,6 @@ body {
                                 &:hover > img {
                                     opacity: 1;
                                 }
-                                &:disabled {
-                                    cursor: no-drop;
-                                }
                                 img {
                                     height: 70%;
                                     opacity: 0.5;
@@ -415,7 +433,7 @@ body {
                             }
                         }
                         .color {
-                            div {
+                            button {
                                 width: 100%;
                                 height: 40px;
                                 min-width: 34px;

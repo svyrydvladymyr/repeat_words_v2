@@ -1,17 +1,21 @@
-const {query} = require('../service');
+const {query, errorLog} = require('../service');
+const lists = {
+    localization : ['en-GB', 'my'],
+    color : ['blue', 'green', 'red', 'yellow', 'grey'],
+    language : ['uk-UA', 'pl-PL', 'it-IT', 'de-DE', 'es-ES', 'zh-CN'],
+    voice : ['Google US English', 'Google UK English Female', 'Google UK English Male']
+}
 
 class SettingsService {
-    lists = {
-        local : ['en-GB', 'my'],
-        color : ['blue', 'green', 'red', 'yellow', 'grey'],
-        lang : ['uk-UA', 'pl-PL', 'it-IT', 'de-DE', 'es-ES', 'zh-CN'],
-        voice : ['Google US English', 'Google UK English Female', 'Google UK English Male']
-    }
+    lists = lists;
 
-
-    async validation(value, list) {
-        if (!this.lists[list].includes(value)) {
-            throw new Error('Bad value!');
+    async validation(req, res, next) {
+        const url = req.url.split('/')[1].replace("/", "");
+        if (!lists[url].includes(req.body.value)) {
+            errorLog('Bad value!', 'error', 'settings', req);
+            res.status(400).send("400 (Bad Request)");
+        } else {
+            next();
         };
     }
 
@@ -23,39 +27,10 @@ class SettingsService {
             .then(() => "Settings updated!")
     }
 
-    async localization(body) {
-        await this.validation(body.value, 'local');
-        return await this.save(body);
-    }
-
-    async language(body) {
-        await this.validation(body.value, 'lang');
-        return await this.save(body);
-    }
-
-    // async delete(body, req) {
-    //     const id = req.params["townid"];
-    //     const sql = `DELETE a.*, b.*
-    //         FROM points a
-    //         LEFT JOIN transfers b
-    //         ON a.town_id = b.transfer_from OR a.town_id = b.transfer_to
-    //         WHERE a.town_id='${id}'`;
-    //     return await query(sql)
-    //         .then(() => "Town deleted!");
-    // }
-
-    // async open(body, req) {
-    //     const id = req.params["townid"];
-    //     const sql = `SELECT * FROM points WHERE town_id='${id}'`;
-    //     return await query(sql)
-    //         .then((result) => result);
-    // }
-
-    // async list() {
-    //     const sql = `SELECT * FROM points`;
-    //     return await query(sql)
-    //         .then((result) => result);
-    // }
+    localization = async (body) => await this.save(body);
+    language = async (body) => await this.save(body);
+    voice = async (body) => await this.save(body);
+    color = async (body) => await this.save(body);
 }
 
 module.exports = new SettingsService();

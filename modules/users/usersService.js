@@ -109,23 +109,24 @@ class UsersService {
 
                 console.log('user', user);
 
-                if (!user) return DATAS;
+                if (!user) {
+                    DATAS.langPack = await this.langPack(page, 'en-GB');
+                    return DATAS;
+                };
 
                 DATAS.rule = `${user.permission}`;
                 DATAS.authorization = '1';
-                DATAS.language = settings.lists.lang.includes(user.language) ? user.language : 'none';
+                DATAS.language = settings.lists.language.includes(user.language) ? user.language : 'none';
                 DATAS.localization = user.localization === 'my' ? 'my' : 'en-GB';
                 DATAS.id = user.userid;
                 DATAS.name = user.name;
                 DATAS.surname = user.surname;
                 DATAS.foto = user.ava;
                 DATAS.langPack = await this.langPack(page, DATAS.localization === 'my' ? DATAS.language : 'en-GB');
-                if (page === 'profile' || page === 'settings') {
-                    DATAS.voice = settings.lists.voice.includes(user.voice) ? user.voice : 'Google UK English Female';
-                    DATAS.color = settings.lists.color.includes(user.color) ? user.color : 'blue';
-                    DATAS.speed = user.speed;
-                    DATAS.pitch = user.pitch;
-                }
+                DATAS.color = settings.lists.color.includes(user.color) ? user.color : 'blue';
+                DATAS.voice = settings.lists.voice.includes(user.voice) ? user.voice : 'Google UK English Female';
+                DATAS.speed = user.speed;
+                DATAS.pitch = user.pitch;
                 if (page === 'profile') {
                     DATAS.email = user.email;
                     DATAS.emailverified = user.emailverified;
@@ -135,7 +136,7 @@ class UsersService {
                     DATAS.registered = date.show('yyyy-mm-dd hh:mi', user.registered);
                 }
                 if (page === 'settings') {
-                    DATAS.langlist = settings.lists.lang;
+                    DATAS.langlist = settings.lists.language;
                     DATAS.voicelist = settings.lists.voice;
                     DATAS.colorlist = settings.lists.color;
                 }

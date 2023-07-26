@@ -25,7 +25,7 @@ class PagesController {
                 errorLog(error, 'error', 'pages', req);
 
                 // console.log('defaultUser', usersService.defaultUser(pagename, lang));
-                res.render(page_name, { DATA : await usersService.defaultUser(page_name, lang) });
+                res.render(page_name, { DATA : await usersService.defaultUser(page_name, "en-GB") });
                 // res.status(500).send("500 (Internal Server Error)");
             });
 

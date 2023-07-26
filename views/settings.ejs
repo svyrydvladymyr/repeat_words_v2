@@ -4,7 +4,7 @@
     <%- include("./parts/head.ejs") %>
 </head>
 <body>
-    <p class="settings_error"><span><%= DATA.langPack.error %></span></p>
+    <p class="settings_error"><span></span><b><%= DATA.langPack.error %></b></p>
     <%- include("./parts/header.ejs") %>
     <%- include("./parts/back.ejs") %>
     <section>
@@ -43,7 +43,7 @@
                 <div class="box">
                     <p class="name"><%= DATA.langPack.lang %></p>
                     <div class="body">
-                        <div class="lang">
+                        <div class="language">
                             <% for(var i=0; i < DATA.langlist.length; i++) { %>
                                 <% if (DATA.langlist[i] === DATA.language) { %>
                                     <button class="active" onclick="settings.language('<%= DATA.langlist[i] %>')"><img src="/img/lang/<%= DATA.langlist[i] %>.png" alt="<%= DATA.langlist[i] %>"></button>
@@ -57,8 +57,8 @@
                 <div class="box">
                     <p class="name"><%= DATA.langPack.type %></p>
                     <div class="body">
-                        <div class="type">
-                            <select>
+                        <div class="voice">
+                            <select onchange="settings.voice(this)">
                                 <% for(var i=0; i < DATA.voicelist.length; i++) { %>
                                     <% if (DATA.voicelist[i] === DATA.voice) { %>
                                         <option value="<%= DATA.voicelist[i] %>" selected><%= DATA.voicelist[i] %></option>
@@ -94,9 +94,9 @@
                         <div class="color">
                             <% for(var i=0; i < DATA.colorlist.length; i++) { %>
                                 <% if (DATA.colorlist[i] === DATA.color) { %>
-                                    <div class="<%= DATA.colorlist[i] %> active"></div>
+                                    <button class="<%= DATA.colorlist[i] %> active" onclick="settings.color('<%= DATA.colorlist[i] %>')"></button>
                                 <% } else { %>
-                                    <div class="<%= DATA.colorlist[i] %>"></div>
+                                    <button class="<%= DATA.colorlist[i] %>" onclick="settings.color('<%= DATA.colorlist[i] %>')"></button>
                                 <% } %>
                             <% } %>
                         </div>

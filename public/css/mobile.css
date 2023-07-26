@@ -70,11 +70,11 @@ body section article .settings_wrap > .box p {
 body section article .settings_wrap > .box > .body {
   height: fit-content;
 }
-body section article .settings_wrap > .box > .body .lang {
+body section article .settings_wrap > .box > .body .language {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-body section article .settings_wrap > .box > .body .lang button {
+body section article .settings_wrap > .box > .body .language button {
   width: 46%;
   margin: 5px 3px;
 }

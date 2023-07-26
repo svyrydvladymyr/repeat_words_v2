@@ -15,6 +15,10 @@ body {
   font: 14px cursive;
 }
 body .settings_error {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 24px;
   margin: 10px 0 0 0;
@@ -25,13 +29,30 @@ body .settings_error {
 }
 body .settings_error span {
   display: none;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  width: 97vw;
+  height: 98vh;
   text-align: center;
   font-weight: bold;
-  border: 1px solid #a34444;
-  background: #fdf2f2;
+  background: #ffdcdc;
+  margin: 0px auto;
   padding: 47px;
-  height: 120px;
+  opacity: 0.6;
+}
+body .settings_error b {
+  display: none;
+  position: absolute;
+  top: 40vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 70vw;
+  height: 20vh;
+  padding: 20px;
+  background: #ffffff;
+  border: 2px solid #ffdada;
+  border-radius: 110px;
 }
 body header {
   grid-area: header;
@@ -331,7 +352,7 @@ body section article .settings_wrap .box .body {
   height: 45px;
   margin: 20px 0px;
 }
-body section article .settings_wrap .box .body .localization, body section article .settings_wrap .box .body .lang, body section article .settings_wrap .box .body .type, body section article .settings_wrap .box .body .speed, body section article .settings_wrap .box .body .pitch, body section article .settings_wrap .box .body .color {
+body section article .settings_wrap .box .body .localization, body section article .settings_wrap .box .body .language, body section article .settings_wrap .box .body .voice, body section article .settings_wrap .box .body .speed, body section article .settings_wrap .box .body .pitch, body section article .settings_wrap .box .body .color {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -341,7 +362,10 @@ body section article .settings_wrap .box .body .localization, body section artic
   width: 100%;
   min-height: 45px;
 }
-body section article .settings_wrap .box .body .localization div, body section article .settings_wrap .box .body .localization button, body section article .settings_wrap .box .body .lang div, body section article .settings_wrap .box .body .lang button, body section article .settings_wrap .box .body .type div, body section article .settings_wrap .box .body .type button, body section article .settings_wrap .box .body .speed div, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch div, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color div, body section article .settings_wrap .box .body .color button {
+body section article .settings_wrap .box .body .localization button:disabled, body section article .settings_wrap .box .body .localization select:disabled, body section article .settings_wrap .box .body .language button:disabled, body section article .settings_wrap .box .body .language select:disabled, body section article .settings_wrap .box .body .voice button:disabled, body section article .settings_wrap .box .body .voice select:disabled, body section article .settings_wrap .box .body .speed button:disabled, body section article .settings_wrap .box .body .speed select:disabled, body section article .settings_wrap .box .body .pitch button:disabled, body section article .settings_wrap .box .body .pitch select:disabled, body section article .settings_wrap .box .body .color button:disabled, body section article .settings_wrap .box .body .color select:disabled {
+  cursor: no-drop;
+}
+body section article .settings_wrap .box .body .localization div, body section article .settings_wrap .box .body .localization button, body section article .settings_wrap .box .body .language div, body section article .settings_wrap .box .body .language button, body section article .settings_wrap .box .body .voice div, body section article .settings_wrap .box .body .voice button, body section article .settings_wrap .box .body .speed div, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch div, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color div, body section article .settings_wrap .box .body .color button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -352,13 +376,13 @@ body section article .settings_wrap .box .body .localization div, body section a
   border: 1px solid;
   border-radius: 6px;
 }
-body section article .settings_wrap .box .body .localization div p, body section article .settings_wrap .box .body .localization button p, body section article .settings_wrap .box .body .lang div p, body section article .settings_wrap .box .body .lang button p, body section article .settings_wrap .box .body .type div p, body section article .settings_wrap .box .body .type button p, body section article .settings_wrap .box .body .speed div p, body section article .settings_wrap .box .body .speed button p, body section article .settings_wrap .box .body .pitch div p, body section article .settings_wrap .box .body .pitch button p, body section article .settings_wrap .box .body .color div p, body section article .settings_wrap .box .body .color button p {
+body section article .settings_wrap .box .body .localization div p, body section article .settings_wrap .box .body .localization button p, body section article .settings_wrap .box .body .language div p, body section article .settings_wrap .box .body .language button p, body section article .settings_wrap .box .body .voice div p, body section article .settings_wrap .box .body .voice button p, body section article .settings_wrap .box .body .speed div p, body section article .settings_wrap .box .body .speed button p, body section article .settings_wrap .box .body .pitch div p, body section article .settings_wrap .box .body .pitch button p, body section article .settings_wrap .box .body .color div p, body section article .settings_wrap .box .body .color button p {
   margin: 0 7px 0 0;
   word-break: break-word;
   text-align: center;
   line-height: 15px;
 }
-body section article .settings_wrap .box .body .localization button, body section article .settings_wrap .box .body .lang button, body section article .settings_wrap .box .body .type button, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color button {
+body section article .settings_wrap .box .body .localization button, body section article .settings_wrap .box .body .language button, body section article .settings_wrap .box .body .voice button, body section article .settings_wrap .box .body .speed button, body section article .settings_wrap .box .body .pitch button, body section article .settings_wrap .box .body .color button {
   background: #fff;
 }
 body section article .settings_wrap .box .body .speed input[type=range], body section article .settings_wrap .box .body .pitch input[type=range] {
@@ -375,7 +399,7 @@ body section article .settings_wrap .box .body .speed div, body section article 
   width: 50px;
   height: 40px;
 }
-body section article .settings_wrap .box .body .type select {
+body section article .settings_wrap .box .body .voice select {
   outline: 0;
   width: 100%;
   height: 40px;
@@ -388,9 +412,6 @@ body section article .settings_wrap .box .body .localization button {
   width: 48%;
   height: 40px;
 }
-body section article .settings_wrap .box .body .localization button:disabled {
-  cursor: no-drop;
-}
 body section article .settings_wrap .box .body .localization button span {
   height: 30px;
   width: 30px;
@@ -399,32 +420,29 @@ body section article .settings_wrap .box .body .localization button span {
   background-clip: content-box;
   padding: 3px;
 }
-body section article .settings_wrap .box .body .lang .active img {
+body section article .settings_wrap .box .body .language .active img {
   height: 70%;
   opacity: 1;
   border: 2px solid;
   border-radius: 22px;
   padding: 1px;
 }
-body section article .settings_wrap .box .body .lang button {
+body section article .settings_wrap .box .body .language button {
   height: 40px;
   min-width: 40px;
   width: 100%;
 }
-body section article .settings_wrap .box .body .lang button:hover > img {
+body section article .settings_wrap .box .body .language button:hover > img {
   opacity: 1;
 }
-body section article .settings_wrap .box .body .lang button:disabled {
-  cursor: no-drop;
-}
-body section article .settings_wrap .box .body .lang button img {
+body section article .settings_wrap .box .body .language button img {
   height: 70%;
   opacity: 0.5;
   border: 1px solid;
   border-radius: 22px;
   padding: 2px;
 }
-body section article .settings_wrap .box .body .color div {
+body section article .settings_wrap .box .body .color button {
   width: 100%;
   height: 40px;
   min-width: 34px;

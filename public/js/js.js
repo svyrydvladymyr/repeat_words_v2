@@ -331,31 +331,47 @@ class Settings {
             .then(resultat => {
                 if (!resultat) { throw new Error() };
                 if (resultat.res) {
+                    this.disable(list, false);
                     resolve(true);
                 };
             })
             .catch(() => {
                 const error_body = service.$(`.settings_error > span`)[0];
-                error_body.style.display = 'block';
+                const error_mess = service.$(`.settings_error > b`)[0];
+                error_body.style.display = 'flex';
+                error_mess.style.display = 'flex';
                 setTimeout(() => {
                     error_body.style.display = 'none';
+                    error_mess.style.display = 'none';
                     this.disable(list, false);
-                }, 5000);
+                }, 3000);
             });
         });
     }
 
+    list(name) {
+        return service.$(`.${name}`)[0].children;
+    }
+
     async language(value) {
-        const list = service.$('.lang')[0].children;
         service.setLang(value);
-        await this.save(value, 'language', list) && location.reload();
+        await this.save(value, 'language', this.list('language')) && location.reload();
     }
 
     async localization(value) {
-        const list = service.$('.localization')[0].children;
         value === 'en-GB' && service.setLang(value);
-        await this.save(value, 'localization', list) && location.reload();
+        await this.save(value, 'localization', this.list('localization')) && location.reload();
     }
+
+    async color(value) {
+        await this.save(value, 'color', this.list('color')) && location.reload();
+    }
+
+    async voice(select) {
+        await this.save(select.value, 'voice', this.list('voice'));
+    }
+
+
 
 }
 

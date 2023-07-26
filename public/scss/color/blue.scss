@@ -40,7 +40,7 @@ body {
             .settings_wrap {
                 .box {
                     border-color: $fifthColor;
-                    .localization, .lang, .type, .color {
+                    .localization, .language, .voice, .color {
                         select, button {
                             border-color: $mainColor!important;
                             color: $mainColor!important;
@@ -55,6 +55,11 @@ body {
                             span {
                                 background-color: $thirdColor;
                             }
+                        }
+                    }
+                    .color {
+                        .active {
+                            background-color: $mainColor!important;
                         }
                     }
                 }
