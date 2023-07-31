@@ -74,8 +74,8 @@
                     <p class="name"><%= DATA.langPack.speed %></p>
                     <div class="body">
                         <div class="speed">
-                            <input type="range" min="0.5" max="2" value="1" step="0.1">
-                            <div id="speed_value"></div>
+                            <input type="range" min="0.5" max="2" value="<%= DATA.speed %>" step="0.1" onchange="settings.speed(this)">
+                            <div id="speed_value"><%= DATA.speed %></div>
                         </div>
                     </div>
                 </div>
@@ -83,8 +83,8 @@
                     <p class="name"><%= DATA.langPack.pitch %></p>
                     <div class="body">
                         <div class="pitch">
-                            <input type="range" min="0" max="2" value="1" step="0.1">
-                            <div id="pitch_value"></div>
+                            <input type="range" min="0" max="2" value="<%= DATA.pitch %>" step="0.1" onchange="settings.pitch(this)">
+                            <div id="pitch_value"><%= DATA.pitch %></div>
                         </div>
                     </div>
                 </div>

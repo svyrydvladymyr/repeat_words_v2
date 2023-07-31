@@ -321,6 +321,9 @@ class Settings {
     }
 
     async save(value, param, list) {
+
+
+        console.log('list', list);
         return new Promise((resolve) => {
             this.disable(list, true);
             fetch(`/settings/${param}`, {
@@ -371,8 +374,15 @@ class Settings {
         await this.save(select.value, 'voice', this.list('voice'));
     }
 
+    async speed(value) {
+        service.$(`#speed_value`)[0].innerHTML = value.value;
+        await this.save(value.value, 'speed', this.list('speed'));
+    }
 
-
+    async pitch(value) {
+        service.$(`#pitch_value`)[0].innerHTML = value.value;
+        await this.save(value.value, 'pitch', this.list('pitch'));
+    }
 }
 
 const validation = new ValidationClass();
