@@ -92,6 +92,7 @@ body header .wrap .menu {
   border: 2px solid;
   border-radius: 6px 0px 6px 6px;
   padding: 6px 16px;
+  z-index: 999;
 }
 body header .wrap .menu::before {
   content: "";
@@ -280,6 +281,7 @@ body section article {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -290,6 +292,50 @@ body section article {
   border: 1px solid;
   border-radius: 15px;
   padding: 15px;
+}
+body section article > button {
+  cursor: pointer;
+  position: relative;
+  width: 96%;
+  max-width: 800px;
+  height: fit-content;
+  padding: 25px 55px 25px 10px;
+  margin: 15px auto;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid;
+  border-radius: 7px;
+  background: #ffffff;
+}
+body section article > button:hover {
+  box-shadow: 0px 0px 3px;
+}
+body section article > button i, body section article > button .fas, body section article > button .fa {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  border: 1px solid;
+  border-left: 2px solid;
+  width: 50px;
+  height: 100%;
+  font-size: 18px;
+  border-radius: 0px 6px 6px 0px;
+}
+body section article hr {
+  width: 94%;
+  max-width: 600px;
+  border: 0px;
+  height: 1px;
+  background: #cbcbcb;
+  outline: 0px;
+  margin: 20px 0px;
+}
+body section article i {
+  cursor: pointer;
 }
 body section article h3 {
   display: flex;
@@ -341,7 +387,7 @@ body section article .settings_wrap .box > p {
   justify-content: center;
   align-items: center;
   justify-content: flex-start;
-  width: 190px;
+  width: 210px;
   height: 45px;
   margin: 10px 10px 10px 0;
   font-weight: bold;
@@ -394,7 +440,7 @@ body section article .settings_wrap .box .body .speed input[type=range], body se
   border-radius: 6px;
   margin-right: 10px;
   font-weight: bold;
-  padding: 0px 10px;
+  padding: 0px;
 }
 body section article .settings_wrap .box .body .speed div, body section article .settings_wrap .box .body .pitch div {
   width: 50px;
@@ -519,10 +565,35 @@ body footer .footer_wrap ul li a {
 body footer .footer_wrap ul li a:hover {
   text-decoration-line: underline;
 }
+body .add_btn_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  justify-content: end;
+  align-items: end;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding-bottom: 15px;
+}
+body .add_btn_wrap i {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  bottom: 20px;
+  font-size: 26px;
+  width: 56px;
+  height: 56px;
+  margin: 20px;
+  border: 2px solid;
+  border-radius: 9px;
+}
 
 input[type=range] {
   height: 26px;
-  -webkit-appearance: none;
   margin: 10px 0;
   width: 100%;
 }
@@ -543,13 +614,13 @@ input[type=range]::-webkit-slider-runnable-track {
 input[type=range]::-webkit-slider-thumb {
   box-shadow: 0px 0px 0px;
   border: 0px solid;
-  height: 20px;
+  height: 120px;
   width: 40px;
   border-radius: 12px;
   background: #529DE1;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -3px;
+  margin-top: -1px;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {

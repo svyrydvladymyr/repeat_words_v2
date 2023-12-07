@@ -60,45 +60,124 @@ class Templates {
         </div>`
     }
 
-    template(type, data) {
-        const type_res = type.includes('menu') ? 'menu' : type;
-        return this[type_res](data);
+    fieldss(data) {
+
+        const field_list =  Object.keys(data.fields);
+
+
+
+        // for (let i = 0; i < field_list.length; i++) {
+        //     if (data.fields[i].type === 'text') {
+        //         return `<div class="blok">
+        //             <label for="${data.fields[i].name}">${data.field_names[data.fields[i].name]}</label>
+        //             <input type="text" name="${data.fields[i].name}" id="${data.fields[i].name}">
+        //         </div>`
+        //     }
+        //     if (data.fields[i].type === 'select') {
+        //         return `<div class="blok">
+        //             <label for="${data.fields[i].name}">${data.field_names[data.fields[i].name]}</label>
+        //             <select name="${data.fields[i].name}" id="${data.fields[i].name}">
+        //                 <option value="one">one</option>
+        //                 <option value="two">two</option>
+        //                 <option value="three">three</option>
+        //             </select>
+        //         </div>`
+        //     }
+        // }
+        return field_list.map((field) => {
+            if (data.fields[field].type === 'text') {
+                return `<div class="blok">
+                    <label for="${data.fields[field].name}">${data.field_names[field]}</label>
+                    <input type="text" name="${data.fields[field].name}" id="${data.fields[field].name}">
+                </div>`
+            }
+            if (data.fields[field].type === 'select') {
+                return `<div class="blok">
+                    <label for="${data.fields[field].name}">${data.field_names[field]}</label>
+                    <select name="${data.fields[field].name}" id="${data.fields[field].name}">
+                        <option value="one">one</option>
+                        <option value="two">two</option>
+                        <option value="three">three</option>
+                    </select>
+                </div>`
+            }
+        })
+    }
+
+    listsadd(data) {
+        console.log('listsadd data', data);
+        console.log('listsadd data', data.fields);
+        console.log('listsadd data', this.fieldss(data).join(''));
+
+        return this.fieldss(data).join('')
+    }
+    // listsaddddd(data) {
+    //     console.log('datadatadata', data);
+    //     return `
+    //     <p>sssssssssssssss</p>
+    //     <p>sssssssssssssss</p>
+    //     <p>sssssssssssssss</p>
+    //     <p>sssssssssssssss</p>
+    //     <p>sssssssssssssss</p>
+    //     <p>sssssssssssssss</p>
+    //     <p>sssssssssssssss</p>
+    //     <p>sssssssssssssss</p>`
+    // }
+
+    template(data) {
+        return this[data.window_type](data);
     };
 };
 
 class ModalWindow extends Templates {
+    icon = {
+        add: '<i class="fas fa-plus"></i>',
+        edit: '<i class="far fa-edit"></i>',
+        delete: '<i class="far fa-trash-alt"></i>'
+    }
+
     constructor(){
         super();
         this.modal_place = service.$('.modal_wrap')[0];
     }
 
     closeBtn() { this.modal_place.innerHTML = '' };
-    closeSub() { service.$('.wrap_sub_modal')[0].innerHTML = '' };
-    closeWrap(event) {
-        let valClose = true;
-        for (let element of event.target.children) {
-            if (element.classList && element.classList.contains('modal_place')) {
-                valClose = false;
-            };
-        };
-        if (!valClose) { this.modal_place.innerHTML = '' };
-    }
+    closeSub() { service.$('.sub_modal_wrap')[0].innerHTML = '' };
 
     show(module, type, data = {}, id) {
-        const window_type = (type === "Del" || type === 'Res') ? type.toLowerCase() : module + type;
+        const sub_list = [];
+        // const window_type = (type === "Del" || type === 'Res') ? type.toLowerCase() : module + type;
+        // const no_close_btn = ['transferTowns', 'transferTimes'].includes(data.window_type) ? '' : `<i class="fa fa-times" onclick="${module}.closeBtn()"></i>`;
+        // const place = (sub_list.includes(type)) ? service.$('.sub_modal_wrap')[0] : this.modal_place;
+
         data.module = module;
-        id && (data.id = id);
-        const place = (['Towns', 'Times'].includes(type)) ? service.$('.wrap_sub_modal')[0] : this.modal_place;
-        const wrap_close_arr = ['townSave', 'transferSave', 'newsSave', 'transferTowns', 'transferTimes'];
-        const wrap_close = wrap_close_arr.includes(window_type) ? '' : `onclick="${module}.closeWrap(event)"`;
-        const no_close_btn = ['transferTowns', 'transferTimes'].includes(window_type) ? '' : `<i class="fa fa-times" onclick="${module}.closeBtn()"></i>`;
-        place.innerHTML =  `<div class="modal_body" ${wrap_close}>
-            <div class="modal_close">${no_close_btn}</div>
-            <div class="modal_place" id="${window_type}" style="${window_type === "newsSave" ? 'max-width: 90%' : '' }">
-                ${this.template(window_type, data)}
-            </div>
-            <div class="wrap_sub_modal"></div>
-        </div>`;
+        data.window_type = module + type;
+        if (sub_list.includes(type)) {
+            data.place = service.$('.sub_modal_wrap')[0];
+            data.place_class = 'place_sub';
+            data.close_btn = 'Sub';
+        } else {
+            data.place = this.modal_place;
+            data.place_class = '';
+            data.close_btn = 'Btn';
+        };
+
+        // console.log('module', module);
+        // console.log('type', type);
+        // id && (data.id = id);
+
+        data.place.innerHTML =
+            `<div class="modal_body">
+                <div class="place ${data.place_class}" id="${data.window_type}">
+                    <div class="close">
+                        <p onclick="${data.module}.close${data.close_btn}()">${data.field_names.close}</p>
+                        <i class="fa fa-times" onclick="${data.module}.close${data.close_btn}()"></i>
+                    </div>
+                    <h4>${data.field_names.title + ' ' + data.icon}</h4>
+                    ${this.template(data)}
+                </div>
+                <div class="sub_modal_wrap"></div>
+            </div>`;
     };
 };
 
@@ -113,6 +192,8 @@ class Services {
     constructor(){}
 
     $(value, parent = document) {return parent.querySelectorAll(value)};
+
+    redirect(path) {window.location.replace(path)};
 
     transliterate(word) {
         const a = {
@@ -326,7 +407,7 @@ class Settings {
         console.log('list', list);
         return new Promise((resolve) => {
             this.disable(list, true);
-            fetch(`/settings/${param}`, {
+            fetch(`/setsettings/${param}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json;charset=utf-8' },
                 body: JSON.stringify({ value }) })
@@ -385,12 +466,120 @@ class Settings {
     }
 }
 
+class Lists extends ModalWindow {
+    fields = {
+        name: {
+            name : "list_name",
+            type : "text",
+            value : [],
+            options : [],
+            fun : [
+                { onclick : [] },
+                { onfocus : [] }
+            ]
+        },
+        name2: {
+            name : "list_name",
+            type : "text",
+            value : [],
+            options : [],
+            fun : [
+                { onclick : [] },
+                { onfocus : [] }
+            ]
+        },
+        name3: {
+            name : "list_name",
+            type : "text",
+            value : [],
+            options : [],
+            fun : [
+                { onclick : [] },
+                { onfocus : [] }
+            ]
+        },
+        name4: {
+            name : "list_name",
+            type : "text",
+            value : [],
+            options : [],
+            fun : [
+                { onclick : [] },
+                { onfocus : [] }
+            ]
+        },
+        name5: {
+            name : "list_name",
+            type : "text",
+            value : [],
+            options : [],
+            fun : [
+                { onclick : [] },
+                { onfocus : [] }
+            ]
+        },
+        type: {
+            name : "list_type",
+            type : "select",
+            value : ['list', 'courses'],
+            options : [
+                { list : ['list'] },
+                { courses : ['courses'] }
+            ],
+            fun : [
+                { onclick : [] },
+                { onfocus : [] }
+            ]
+        },
+        permissions: {
+            name : "list_permissions",
+            type : "select",
+            value : ['public', 'private', 'global', 'friends'],
+            options : [
+                { public : ['public'] },
+                { private : ['private'] },
+                { global : ['global'] },
+                { friends : ['friends'] }
+            ],
+            fun : [
+                { onclick : [] },
+                { onfocus : [] }
+            ]
+        }
+    }
+
+    constructor(){ super() }
+
+    showForm(module, type, data){
+        data.icon = this.icon[type];
+        this.show(module, type, data);
+    }
+
+    add(module, type, data) {
+        data.fields = this.fields;
+        this.showForm(module, type, data)
+    }
+
+
+}
+
+class Words extends ModalWindow {
+    constructor(){ super() }
+    showForm(module, type, data){
+        console.log('formformform', module, type);
+        this.show(module, type, data);
+    }
+}
+
 const validation = new ValidationClass();
 const service = new Services();
 const settings = new Settings();
 const loadStatic = new Static();
 const date = new ShowDate();
 const calendar = new Calendar();
+const modal = new ModalWindow();
+const lists = new Lists();
+const words = new Words();
 
 window.onload = function() {};
 window.onscroll = function() {};

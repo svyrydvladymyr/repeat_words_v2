@@ -1,7 +1,7 @@
 {
-  "name": "transfer_booking",
+  "name": "repeat_words_v2",
   "version": "1.0.0",
-  "description": "Application for booking transfers",
+  "description": "Application for repeat words",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -34,14 +34,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/svyrydvladymyr/server.git"
+    "url": "git+https://github.com/svyrydvladymyr/repeat_words_v2.git"
   },
   "bugs": {
-    "url": "https://github.com/svyrydvladymyr/server/issues"
+    "url": "https://github.com/svyrydvladymyr/repeat_words_v2/issues"
   },
-  "homepage": "https://github.com/svyrydvladymyr/server#readme",
+  "homepage": "https://github.com/svyrydvladymyr/repeat_words_v2#readme",
   "keywords": [
-    "server"
+    "repeat_words_v2"
   ],
   "devDependencies": {
     "nodemon": "^2.0.15"

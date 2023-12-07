@@ -37,7 +37,10 @@ const tables = {
     lists: `CREATE TABLE lists (id INT AUTO_INCREMENT PRIMARY KEY,
         listid VARCHAR(20) NOT NULL UNIQUE,
         list VARCHAR(150) NOT NULL,
+        list_type VARCHAR(100) NOT NULL,
         list_permission VARCHAR(10),
+        created_by VARCHAR(100) NOT NULL,
+        updated_date DATETIME,
         created_date DATETIME
         )`,
     wordinlist: `CREATE TABLE wordinlist (id INT AUTO_INCREMENT PRIMARY KEY,

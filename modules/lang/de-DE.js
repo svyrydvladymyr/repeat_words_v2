@@ -12,6 +12,10 @@ module.exports = {
         autor : "Die Seite wurde entwickelt",
         developer : "Svyrid Volodymyr"
     },
+    message : {
+        selectlang : "--selectlang--",
+        notauthorized : "--notauthorized--"
+    },
     home : {
         repeat : "Wiederholung von Wörtern",
         save : "Hinzufügen / Bearbeiten",
@@ -59,5 +63,27 @@ module.exports = {
         item7 : "Statistik der Beliebtheit der von Ihnen hinzugefügten Wörter",
         item8 : "Beliebtheitsstatistik der von Ihnen erstellten Listen",
         item9 : "Wörter, bei denen Sie Fehler machen, werden häufiger zur Wiederholung angeboten."
+    },
+    lists : {
+        title : "Списки слів"
+    },
+    form : {
+        main : {
+            close : '--close--'
+        },
+        lists : {
+            title : "--title--",
+            name : "--name--",
+            type : "--type--",
+            permissions : "--permissions--",
+            list : '--list--',
+            courses : '--courses--',
+            public : '--public--',
+            private : '--private--',
+            friends : '--friends--'
+        },
+        words : {
+            title : "Слово"
+        }
     }
 }

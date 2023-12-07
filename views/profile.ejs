@@ -8,7 +8,32 @@
     <%- include("./parts/back.ejs") %>
     <section>
         <article>
-            <p>profile</p>
+            <% if (DATA.authorization === '1') { %>
+                <p></p>
+                <p><b><%= DATA.langPack.username %>: </b> <%= DATA.name %> <%= DATA.surname %></p>
+                <p><i class="far fa-edit" title="Edit Email"></i><b> <%= DATA.langPack.email %>: </b> <%= DATA.email %> </p>
+                <p><i class="far fa-edit" title="Edit Birthday"></i><b> <%= DATA.langPack.birth %>: </b> <%= DATA.birthday %> </p>
+                <p><i class="far fa-edit" title="Edit Gender"></i><b> <%= DATA.langPack.sex %>: </b> <%= DATA.gender %> </p>
+                <p><b><%= DATA.langPack.provider %>: </b> <%= DATA.provider %> </p>
+                <p><b><%= DATA.langPack.registered %>: </b> <%= DATA.registered %> </p>
+                <hr>
+                <p>
+                    <b><%= DATA.langPack.interface %>: </b>
+                    <% if (DATA.localization === 'en-GB') { %>
+                        English
+                    <% } else { %>
+                        <%= DATA.langname %>
+                    <% } %>
+                </p>
+                <p><b><%= DATA.langPack.lang %>: </b> <%= DATA.langname %> </p>
+                <hr>
+                <p><b><%= DATA.langPack.type %>: </b> <%= DATA.voice %> </p>
+                <p><b><%= DATA.langPack.speed %>: </b> <%= DATA.speed %> </p>
+                <p><b><%= DATA.langPack.pitch %>: </b> <%= DATA.pitch %> </p>
+                <p></p>
+            <% } else { %>
+                <p><%= DATA.langPack.notauthorized %></p>
+            <% } %>
         </article>
     </section>
     <%- include("./parts/footer.ejs") %>

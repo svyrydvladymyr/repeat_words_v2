@@ -1,15 +1,8 @@
-const fs = require('fs');
 const { query, errorLog, userToken, date } = require("../service");
 const settings = require("../settings/settingsService");
+const langService = require("../lang/langService");
 
 class UsersService {
-    async langPack(page, lang) {
-        const pack = (fs.existsSync(`./modules/lang/${lang}.js`))
-            ? require(`../lang/${lang}`)
-            : require(`../lang/en-GB`);
-        return {...pack['main'], ...pack[`${page}`]};
-    };
-
     async addSettings(id) {
         const settings_sql = `INSERT INTO settings (userid) VALUES ('${id}')`;
         await query(settings_sql)
@@ -53,7 +46,6 @@ class UsersService {
         const sql = `UPDATE users SET
                 name = '${user.firstName}',
                 surname = '${user.lastName}',
-                email = '${user.email}',
                 ava = '${user.photo}'
             WHERE userid = '${user.id}'`;
         await query(sql)
@@ -65,8 +57,7 @@ class UsersService {
         await this.addSettings(user.id);
     }
 
-    async defaultUser(page, lang) {
-        console.log(lang);
+    async defaultUser(page) {
         const permission = {
             authorization : '0',
             rule : '0'
@@ -86,61 +77,63 @@ class UsersService {
             email : '',
             emailverified : '',
             language : 'none',
+            langname : '',
             page : page || 'home',
             voice : 'Google UK English Female',
             speed : '1',
             pitch : '1',
-            color : 'blue',
-            langPack : await this.langPack(page, lang)
+            color : 'blue'
         };
-        return {...permission, ...user, ...settings};
+        const lists = {
+            langlist : [],
+            voicelist : [],
+            colorlist : []
+        };
+        return {...permission, ...user, ...settings, ...lists};
     };
 
-    async getUser(req, res, page, lang) {
-
-        console.log('page', page);
-        const DATAS = await this.defaultUser(page, lang);
+    async getUser(req, res, page) {
+        // console.log('page', page);
+        const USER = await this.defaultUser(page);
         const sql = `SELECT * FROM users
                     LEFT JOIN settings ON users.userid = settings.userid
                     WHERE users.token = '${userToken(req, res)}'`;
         return await query(sql)
             .then((user) => user[0])
             .then(async (user) => {
-
                 console.log('user', user);
-
-                if (!user) {
-                    DATAS.langPack = await this.langPack(page, 'en-GB');
-                    return DATAS;
-                };
-
-                DATAS.rule = `${user.permission}`;
-                DATAS.authorization = '1';
-                DATAS.language = settings.lists.language.includes(user.language) ? user.language : 'none';
-                DATAS.localization = user.localization === 'my' ? 'my' : 'en-GB';
-                DATAS.id = user.userid;
-                DATAS.name = user.name;
-                DATAS.surname = user.surname;
-                DATAS.foto = user.ava;
-                DATAS.langPack = await this.langPack(page, DATAS.localization === 'my' ? DATAS.language : 'en-GB');
-                DATAS.color = settings.lists.color.includes(user.color) ? user.color : 'blue';
-                DATAS.voice = settings.lists.voice.includes(user.voice) ? user.voice : 'Google UK English Female';
-                DATAS.speed = user.speed;
-                DATAS.pitch = user.pitch;
+                (!user) && USER;
+                USER.rule = `${user.permission}`;
+                USER.authorization = '1';
+                USER.language = settings.lists.language.includes(user.language) ? user.language : 'none';
+                USER.localization = user.localization === 'my' ? 'my' : 'en-GB';
+                USER.id = user.userid;
+                USER.name = user.name;
+                USER.surname = user.surname;
+                USER.foto = user.ava;
+                USER.color = settings.lists.color.includes(user.color) ? user.color : 'blue';
+                USER.voice = settings.lists.voice.includes(user.voice) ? user.voice : 'Google UK English Female';
+                USER.speed = user.speed;
+                USER.pitch = user.pitch;
+                USER.form = JSON.stringify(await langService.formFields(page, USER.language));
+                if (USER.language === 'none') {
+                    USER.langlist = settings.lists.language;
+                }
                 if (page === 'profile') {
-                    DATAS.email = user.email;
-                    DATAS.emailverified = user.emailverified;
-                    DATAS.birthday = user.birthday;
-                    DATAS.gender = user.gender;
-                    DATAS.provider = user.provider;
-                    DATAS.registered = date.show('yyyy-mm-dd hh:mi', user.registered);
+                    USER.langname = langService.lang_alias[`${USER.language}`];
+                    USER.email = user.email;
+                    USER.emailverified = user.emailverified;
+                    USER.birthday = user.birthday;
+                    USER.gender = user.gender;
+                    USER.provider = user.provider;
+                    USER.registered = date.show('yyyy-mm-dd hh:mi', user.registered);
                 }
                 if (page === 'settings') {
-                    DATAS.langlist = settings.lists.language;
-                    DATAS.voicelist = settings.lists.voice;
-                    DATAS.colorlist = settings.lists.color;
+                    USER.langlist = settings.lists.language;
+                    USER.voicelist = settings.lists.voice;
+                    USER.colorlist = settings.lists.color;
                 }
-                return DATAS;
+                return USER;
             })
     };
 }

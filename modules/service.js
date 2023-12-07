@@ -148,6 +148,8 @@ const autorisation = (req, res, next) => {
     const userInfo = 'userid, email, permission';
     query(`SELECT ${userInfo} FROM users WHERE token = '${userToken(req, res)}'`)
         .then((user) => {
+
+            console.log('useruseruser', user);
             req.user = user;
             if (!user[0]) {
                 errorLog('Not authorized user!', 'access', 'autorisation', req);

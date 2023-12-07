@@ -12,6 +12,10 @@ module.exports = {
         autor : "The site was developed",
         developer : "Svyrid Volodymyr"
     },
+    message : {
+        selectlang : "Choose your language!",
+        notauthorized : "You need to log in to access this page!"
+    },
     home : {
         repeat : "Repetition of words",
         save : "Add / edit",
@@ -59,5 +63,27 @@ module.exports = {
         item7 : "Statistics of the popularity of the words you added",
         item8 : "Popularity statistics of lists created by you",
         item9 : "Words in which you make mistakes are offered for repetition more often"
+    },
+    lists : {
+        title : "Списки слів"
+    },
+    form : {
+        main : {
+            close : 'Сlose'
+        },
+        lists : {
+            title : "Set of words",
+            name : "Name",
+            type : "Type of set of words",
+            permissions : "Set availability",
+            list : 'Set',
+            courses : 'Course',
+            public : 'Public',
+            private : 'Private',
+            friends : 'For friends'
+        },
+        words : {
+            title : "Слово"
+        }
     }
 }

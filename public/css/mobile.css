@@ -91,4 +91,13 @@ body footer {
   padding: 10px;
 }
 
+.modal_wrap .modal_body .place, .sub_modal_wrap .modal_body .place {
+  width: 100%;
+  max-width: 96%;
+  height: 97%;
+}
+.modal_wrap .modal_body .place_sub, .sub_modal_wrap .modal_body .place_sub {
+  width: fit-content;
+}
+
 /*# sourceMappingURL=mobile.css.map */

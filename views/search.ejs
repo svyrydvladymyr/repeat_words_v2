@@ -12,11 +12,9 @@
                 <% if (DATA.language === 'none') { %>
                     <%- include("./parts/nolang.ejs") %>
                 <% } else { %>
-                    <p></p>
-                    <button onclick="service.redirect('/repeat')" href="/repeat"><%= DATA.langPack.repeat %><i class="fas fa-graduation-cap"></i></button>
-                    <button onclick="service.redirect('/search')"><%= DATA.langPack.save %><i class="fas fa-plus"></i></button>
-                    <button onclick="service.redirect('/lists')"><%= DATA.langPack.lists %><i class="fa fa-th-list"></i></button>
-                    <p></p>
+                    <p>search</p>
+
+                    <%- include("./parts/add.ejs") %>
                 <% } %>
             <% } else { %>
                 <p><%= DATA.langPack.notauthorized %></p>
@@ -25,4 +23,16 @@
     </section>
     <%- include("./parts/footer.ejs") %>
     <%- include("./parts/script.ejs") %>
+    <% if (DATA.authorization === '1') { %>
+        <% if (DATA.language !== 'none') { %>
+            <script>
+                const data = { field_names: JSON.parse('<%- DATA.form %>') };
+                if (service.$('#add_form').length > 0) {
+                    service.$('#add_form')[0].addEventListener("click", function(){
+                        words.showForm('words', 'add', data);
+                    }, false);
+                }
+            </script>
+        <% } %>
+    <% } %>
 </body>

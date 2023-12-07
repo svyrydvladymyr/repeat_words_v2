@@ -19,6 +19,13 @@ body .back_wrap .back_body a:hover {
 body section article {
   border-color: #c0c0c0;
 }
+body section article > button {
+  color: #5681bf !important;
+}
+body section article i {
+  border-color: #687c9a;
+  background-color: #e4efff;
+}
 body section article .title_line {
   border-color: #687c9a;
 }
@@ -42,7 +49,7 @@ body section article .settings_wrap .box .color .active {
   background-color: #5681bf !important;
 }
 
-input[type=range] {
+input[type=range], input[type=text], select {
   color: #5681bf;
 }
 

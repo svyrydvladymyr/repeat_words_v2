@@ -12,11 +12,8 @@
                 <% if (DATA.language === 'none') { %>
                     <%- include("./parts/nolang.ejs") %>
                 <% } else { %>
-                    <p></p>
-                    <button onclick="service.redirect('/repeat')" href="/repeat"><%= DATA.langPack.repeat %><i class="fas fa-graduation-cap"></i></button>
-                    <button onclick="service.redirect('/search')"><%= DATA.langPack.save %><i class="fas fa-plus"></i></button>
-                    <button onclick="service.redirect('/lists')"><%= DATA.langPack.lists %><i class="fa fa-th-list"></i></button>
-                    <p></p>
+                    <p>repeat</p>
+
                 <% } %>
             <% } else { %>
                 <p><%= DATA.langPack.notauthorized %></p>

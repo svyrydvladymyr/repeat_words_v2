@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 });
 
 //routs
-app.use("/settings", settings);
+app.use("/setsettings", settings);
 
 app.use((req, res, next) => {
     (req.url.slice(-1) === '/' && req.url.length > 1 && !/\?[^]*\//.test(req.url))
@@ -74,13 +74,16 @@ app.get("/contacts", renderPage.userData);
 app.get("/notification", renderPage.userData);
 app.get("/friends", renderPage.userData);
 app.get("/privacy-policy", renderPage.userData);
+app.get("/repeat", renderPage.userData);
+app.get("/search", renderPage.userData);
+app.get("/lists", renderPage.userData);
 
 //redirect to home page
 app.get("/$", (req, res, next) => { res.redirect("/home") });
 app.get("*", (req, res) => { res.redirect("/home") });
 
 //creating server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8066;
 app.listen(PORT, (error) => {
     error
         ? console.log("\u001b[31mServer ERROR:\u001b[0m", error)

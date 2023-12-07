@@ -34,6 +34,13 @@ body {
     section {
         article{
             border-color: $fifthColor;
+            > button {
+                color: $mainColor!important;
+            }
+            i {
+                border-color: $secondColor;
+                background-color: $fourthColor;
+            }
             .title_line {
                 border-color: $secondColor;
             }
@@ -69,6 +76,6 @@ body {
 
 }
 
-input[type=range] {
+input[type=range], input[type=text], select {
     color: $mainColor;
 }

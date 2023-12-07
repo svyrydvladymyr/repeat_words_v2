@@ -1,0 +1,12 @@
+<p><%= DATA.langPack.selectlang %></p>
+<div class="settings_wrap">
+    <div class="box">
+        <div class="body">
+            <div class="language">
+                <% for(var i=0; i < DATA.langlist.length; i++) { %>
+                    <button onclick="settings.language('<%= DATA.langlist[i] %>')"><img src="/img/lang/<%= DATA.langlist[i] %>.png" alt="<%= DATA.langlist[i] %>"></button>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>

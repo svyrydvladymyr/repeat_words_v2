@@ -105,3 +105,16 @@ body {
         padding: 10px;
     }
 }
+
+.modal_wrap, .sub_modal_wrap {
+    .modal_body {
+        .place {
+            width: 100%;
+            max-width: 96%;
+            height: 97%;
+        }
+        .place_sub {
+            width: fit-content;
+        }
+    }
+}
